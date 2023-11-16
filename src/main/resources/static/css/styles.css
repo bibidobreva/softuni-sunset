@@ -1,0 +1,96 @@
+body{
+    font-family: PT Sans, sans-serif;
+    background-color: #FFE7D6;
+}
+header{
+    background-color: whitesmoke;
+}
+
+.main{
+    width: 100%;
+}
+
+
+.main-intro{
+    background-image: url(image/sunset.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    margin: 0;
+    padding-bottom: 70px;
+    padding-top: 10px;
+    color: whitesmoke;
+    text-align: center;
+}
+
+.main-intro h1{
+    font-size: 70px;
+    padding-top: 150px;
+    padding-bottom: 30px;
+}
+
+.main-intro p{
+    font-size: 25px;
+    padding-bottom: 20px;
+}
+
+.buttons{
+    padding-bottom: 70px;
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    
+}
+
+
+.main-intro button{
+    padding: 10px 30px;
+    font-size: 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #28241F;
+    background-color: whitesmoke;
+    
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+nav ul{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    list-style: none;
+    font-weight: 500;
+}
+
+nav ul li a{
+    color: #28241F;
+    font-size: 25px;
+    text-decoration: none;
+    
+}
+
+.site-intro{
+    background-color: whitesmoke;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.site-intro img{
+    width: 60%;
+    margin: auto;
+    padding: 20px 0px;
+}
+
+.site-intro div{
+    font-size: 20px;
+    text-align: center;
+
+}

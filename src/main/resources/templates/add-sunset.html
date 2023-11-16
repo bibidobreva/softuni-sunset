@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="login.css">
+    <title>Add Sunset</title>
+</head>
+<body>
+
+    <main>
+        <div class="border">
+            <form>
+                <h3>Add a sunset photo</h3>
+                <div class="field">
+                    <Label for="location">Location</Label>
+                    <input class="location" type="text" placeholder="Location">
+                    <small>Error message</small>
+                 </div>
+        
+                 <div class="field">
+                    <Label for="date">Date</Label>
+                    <input class="date" type="date" >
+                 </div>
+        
+                 <div class="field">
+                    <Label for="continent">Username</Label>
+                    <select class="select-continent">
+                        <option value="">Select Continent</option>
+                        <option value="AFRICA">Africa</option>
+                        <option value="ANTARRCTICA">Antartica</option>
+                        <option value="ASIA">Asia</option>
+                        <option value="AUSTRALIA">Australia</option>
+                        <option value="EUROPE">Europe</option>
+                        <option value="NORTH_AMERICA">North America</option>
+                        <option value="SOUTH_AMERICA">South America</option>
+                    </select>
+                 </div>
+    
+                 <div class="field">
+                    <label for="photo">Choose a Photo:</label>
+                    <input type="file" name="file" id="photo" accept="image/*" required>
+                    <button type="submit">Upload Photo</button>
+                </div>
+
+                <div>
+                    <button>Add sunset</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    
+</body>
+</html>
