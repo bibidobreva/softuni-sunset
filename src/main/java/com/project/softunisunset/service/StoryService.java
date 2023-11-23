@@ -18,7 +18,7 @@ public class StoryService {
     }
 
 
-    public boolean create(CreateStoryDTO createStoryDTO){
+    public boolean createStory(CreateStoryDTO createStoryDTO){
         Story story = new Story();
 
         //to check user
