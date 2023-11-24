@@ -21,4 +21,30 @@ public class CreateStoryDTO {
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
+
+
+    public CreateStoryDTO(){}
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getStory() {
+        return story;
+    }
+
+    public void setStory(String story) {
+        this.story = story;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 }
