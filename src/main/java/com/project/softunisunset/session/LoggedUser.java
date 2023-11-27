@@ -9,6 +9,8 @@ public class LoggedUser {
     private long id;
     private String username;
 
+    private String role;
+
     public long getId() {
         return id;
     }
@@ -23,5 +25,13 @@ public class LoggedUser {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
