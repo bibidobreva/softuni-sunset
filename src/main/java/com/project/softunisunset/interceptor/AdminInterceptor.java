@@ -14,18 +14,17 @@ public class AdminInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-        // Check if the user has the ADMIN role
-        if (!isAdmin()) {
+        // Check if the user has the ADMIN role using Spring Security
+        if (!request.isUserInRole("ADMIN")) {
             // Redirect to an unauthorized page or show an error message
-            //TODO
             response.sendRedirect("/unauthorized");
             return false; // Stop further processing
         }
         return true; // Continue with the request processing
     }
 
-    private boolean isAdmin() {
-        // Check if the user has the ADMIN role
-        return "ADMIN".equals(loggedUser.getRole());
-    }
+//    private boolean isAdmin() {
+//        // Check if the user has the ADMIN role
+//        return "ADMIN".equals(loggedUser.getRole());
+//    }
 }

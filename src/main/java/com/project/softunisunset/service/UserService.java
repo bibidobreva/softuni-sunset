@@ -16,4 +16,7 @@ public class UserService {
         this.sunsetRepository = sunsetRepository;
         this.storyRepository = storyRepository;
     }
+
+    public void assignRole(Long userId, String role) {
+    }
 }
