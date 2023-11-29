@@ -1,5 +1,6 @@
 package com.project.softunisunset.config;
 
+import com.project.softunisunset.models.enums.UserRolesEnums;
 import com.project.softunisunset.repositories.UserRepository;
 import com.project.softunisunset.service.SunsetUserDetailsService;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
@@ -7,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -18,7 +21,7 @@ public class SpringSecurityConfiguration {
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers("/", "/login", "/register").permitAll()
-                        .requestMatchers(request -> "/admin".equals(request.getServletPath())).hasRole("ADMIN")
+                        .requestMatchers("/events/add").hasRole(UserRolesEnums.ADMIN.name())
                         .anyRequest().authenticated()
         ).formLogin(
                 formLogin -> {
@@ -43,6 +46,11 @@ public class SpringSecurityConfiguration {
     public UserDetailsService userDetailsService(UserRepository userRepository){
         return new SunsetUserDetailsService(userRepository) ;
 
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 
 }
