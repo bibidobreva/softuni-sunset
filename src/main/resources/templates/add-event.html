@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="login.css">
-    <title>Login</title>
+    <title>Event add</title>
 </head>
 <body>
 <header></header>
@@ -13,19 +13,24 @@
 <main>
    <div class="border">
     <form>
-      <h3>Login</h3>
+      <h3>Add event</h3>
         <div class="field">
-            <Label for="username">Username</Label>
-            <input class="username" type="text" placeholder="Username">
+            <Label for="name">Name</Label>
+            <input class="name" type="text" placeholder="Name">
          </div>
 
          <div class="field">
-            <label for="password">Password</label>
-            <input type="password", class="password" placeholder="Password">
+            <label for="description">Description</label>
+            <textarea name="text" id="description" cols="30" rows="10"></textarea>
+         </div>
+
+         <div class="field">
+            <Label for="date">Date</Label>
+            <input class="date" type="date" >
          </div>
 
          <div class="button">
-            <button>Login</button>
+            <button>Add event</button>
          </div>
     </form>
 </div> 

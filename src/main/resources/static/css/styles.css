@@ -2,7 +2,7 @@ body{
     font-family: PT Sans, sans-serif;
     background-color: #FFE7D6;
 }
-header{
+header, .footer{
     background-color: whitesmoke;
 }
 
@@ -93,4 +93,11 @@ nav ul li a{
     font-size: 20px;
     text-align: center;
 
+}
+
+
+.footer p{
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
