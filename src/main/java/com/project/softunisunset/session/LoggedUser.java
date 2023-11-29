@@ -34,4 +34,9 @@ public class LoggedUser {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public void logout() {
+        this.id = 0;
+        this.username=null;
+    }
 }

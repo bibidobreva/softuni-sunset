@@ -27,6 +27,8 @@ public class RegistrationController {
     @GetMapping("/register")
     public String register() {
         long loggedUserId = loggedUser.getId();
+
+        //TODO do i need that
         if(loggedUserId!=0){
             return "redirect:/home";
         }
@@ -50,5 +52,13 @@ public class RegistrationController {
         }
 
         return "redirect:login";
+    }
+
+
+    @GetMapping("/logout")
+    public String logout(){
+        this.authService.logout();
+
+        return "redirect:/";
     }
 }

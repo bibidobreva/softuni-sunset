@@ -5,6 +5,7 @@ import com.project.softunisunset.models.entity.User;
 import com.project.softunisunset.repositories.UserRepository;
 import com.project.softunisunset.session.LoggedUser;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -14,11 +15,13 @@ public class AuthService {
     private final UserRepository userRepository;
     private LoggedUser loggedUser;
     private final ModelMapper modelMapper;
+    private final PasswordEncoder passwordEncoder;
 
-    public AuthService(UserRepository userRepository, LoggedUser loggedUser, ModelMapper modelMapper) {
+    public AuthService(UserRepository userRepository, LoggedUser loggedUser, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.loggedUser = loggedUser;
         this.modelMapper = modelMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public boolean register(UserRegistrationDTO registrationDTO) {
@@ -38,9 +41,15 @@ public class AuthService {
 //        user.setEmail(registrationDTO.getEmail());
 //        user.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
 
+//TODO
+        registrationDTO.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
 
 
         this.userRepository.save(this.modelMapper.map(registrationDTO, User.class));
         return true;
+    }
+
+    public void logout() {
+        this.loggedUser.logout();
     }
 }
