@@ -15,7 +15,7 @@ public class Continent extends BaseEntity{
     @Column(nullable = false)
     private String description;
 
-    @OneToMany(mappedBy = "sunset")
+    @OneToMany(mappedBy = "continent")
     private List<Sunset> sunsets;
 
 

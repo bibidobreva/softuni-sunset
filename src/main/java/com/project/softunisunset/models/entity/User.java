@@ -1,8 +1,6 @@
 package com.project.softunisunset.models.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -28,13 +26,16 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private LocalDate birthdate;
 
+    @OneToMany(mappedBy = "user")
     private List<Sunset> sunsets;
 
+    @ManyToMany
     private List<Sunset> likedSunsets;
 
+    @OneToMany(mappedBy = "user")
     private List<Story> stories;
 
-    private List<Event> events;
+
 
 
     public User(){}

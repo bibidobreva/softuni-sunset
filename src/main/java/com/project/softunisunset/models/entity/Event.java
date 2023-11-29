@@ -1,5 +1,6 @@
 package com.project.softunisunset.models.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -8,7 +9,9 @@ import java.time.LocalDate;
 @Table
 @Entity
 public class Event extends BaseEntity{
+    @Column
     private String name;
+    @Column
     private String description;
     private LocalDate date;
 
