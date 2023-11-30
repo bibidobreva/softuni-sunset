@@ -3,6 +3,7 @@ package com.project.softunisunset.models.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Table
@@ -36,6 +37,8 @@ public class User extends BaseEntity {
     private List<Story> stories;
 
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<UserRoleEntity> roles = new ArrayList<>();
 
 
     public User(){}
@@ -110,5 +113,13 @@ public class User extends BaseEntity {
 
     public void setStories(List<Story> stories) {
         this.stories = stories;
+    }
+
+    public List<UserRoleEntity> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<UserRoleEntity> roles) {
+        this.roles = roles;
     }
 }

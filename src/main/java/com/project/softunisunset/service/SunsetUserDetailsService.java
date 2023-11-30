@@ -2,7 +2,6 @@ package com.project.softunisunset.service;
 
 import com.project.softunisunset.models.entity.User;
 import com.project.softunisunset.repositories.UserRepository;
-import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
