@@ -1,7 +1,10 @@
 package com.project.softunisunset.service;
 
 import com.project.softunisunset.models.entity.User;
+import com.project.softunisunset.models.entity.UserRoleEntity;
 import com.project.softunisunset.repositories.UserRepository;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -29,9 +32,14 @@ public class SunsetUserDetailsService implements UserDetailsService {
         return org.springframework.security.core.userdetails.User
                 .withUsername(user.getUsername())
                 .password(user.getPassword())
-                .authorities(List.of()) //TODO
+                .authorities(user.getRoles().stream().map(SunsetUserDetailsService::map).toList())
                 .build();
 
+    }
+
+    private static GrantedAuthority map(UserRoleEntity userRoleEntity) {
+
+        return new SimpleGrantedAuthority("ROLE_" + userRoleEntity.getRole().name());
     }
 
 
