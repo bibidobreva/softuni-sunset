@@ -1,36 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <title>Add Sunset</title>
 </head>
-<body>
+<body id="body">
 
-    <header></header>
+    <header th:replace="~{fragments/commons::nav}"></header>
 
     <main>
 
 
-        <div class="border">
+        <div id="border">
             <form>
-                <h3>Add a sunset photo</h3>
+                <h3 class="h-custom">Add a sunset photo</h3>
                 <div class="field">
-                    <Label for="location">Location</Label>
-                    <input class="location" type="text" placeholder="Location">
-                    <small>Error message</small>
+
+                    <div>
+                        <Label for="location">Location:</Label>
+                        <input class="form-control" type="text" placeholder="Location">
+                    </div>
+                    <small class="text-danger invalid-feedback">Error message location</small>
                  </div>
         
                  <div class="field">
-                    <Label for="date">Date</Label>
-                    <input class="date" type="date" >
+                    <div>
+                        <Label for="date">Date:</Label>
+                    </div>
+                    <input class="form-control" type="date" >
+                    <small class="text-danger invalid-feedback">Error message date</small>
                  </div>
         
                  <div class="field">
-                    <Label for="continent">Username</Label>
-                    <select class="select-continent">
+                    <div>
+                        <Label for="continent">Continent:</Label>
+                    </div>
+                    <select class="form-control">
                         <option value="">Select Continent</option>
                         <option value="AFRICA">Africa</option>
                         <option value="ANTARRCTICA">Antartica</option>
@@ -40,23 +50,26 @@
                         <option value="NORTH_AMERICA">North America</option>
                         <option value="SOUTH_AMERICA">South America</option>
                     </select>
+                    <small class="text-danger invalid-feedback">Error message continent</small>
                  </div>
     
                  <div class="field">
-                    <label for="photo">Choose a Photo:</label>
-                    <input type="file" name="file" id="photo" accept="image/*" required>
-                    <button type="submit">Upload Photo</button>
+                    <div>
+                        <label for="photo">Choose a Photo:</label>
+                    </div>
+                    <input class="form-control" type="file" name="file" id="photo" accept="image/*" required >
+                    <small class="text-danger invalid-feedback">Error message file</small>
                 </div>
 
                 <div class="button">
-                    <button>Add sunset</button>
+                    <button class="button-custom">Add sunset</button>
                 </div>
             </form>
         </div>
     </main>
     
 
-    <footer></footer>
+    <footer th:replace="~{fragments/commons::footer}"></footer>
     
 </body>
 </html>

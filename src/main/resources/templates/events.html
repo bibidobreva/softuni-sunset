@@ -1,22 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <title>Events</title>
 </head>
-<body>
-    <header></header>
+<body id="body">
+    <header th:replace="~{fragments/commons::nav}"></header>
     <main>
         <section>
-            <div>
-                <h2>Event name</h2>
-                <p>Description</p>
-                <p>Date</p>
+            <div id="border">
+                <h3 class="h-custom">Events</h3>
+    
+                <div id="content">
+                    <span>NAME</span>
+                    <p>Event description .....</p>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer></footer>
+    <footer th:replace="~{fragments/commons::footer}"></footer>
 </body>
 </html>

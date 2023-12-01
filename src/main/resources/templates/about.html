@@ -1,19 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/login.css">
     <title>About us</title>
 </head>
-<body>
+<body id="body">
     <header th:replace="~{fragments/commons::nav}"></header>
 
-    <div>
-        <p>Page with information about out website, company and things like that
-            Mission....
-        </p>
-    </div>
+    <main>
+        <div class="jumbotron p-3 mb-2 bg-light text-dark" id="border">
+            <h1 class="display-4">SITE NAME</h1>
+            <p class="lead">A little intro</p>
+            <hr class="my-4">
+            <p>The whole description of the purpose and the mission of the site</p>
+          
+          </div>
+    </main>
 
-    <footer></footer>
+    <footer th:replace="~{fragments/commons::footer}"></footer>
 </body>
 </html>

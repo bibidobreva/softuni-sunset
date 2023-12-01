@@ -51,3 +51,12 @@ a{
 p{
     text-align: center;
 }
+
+button{
+    color: #28241F;
+    width: 25%;
+    background-color: #FFC9A3;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px;
+}

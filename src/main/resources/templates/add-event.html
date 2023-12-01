@@ -1,42 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <title>Event add</title>
 </head>
-<body>
-<header></header>
+<body id="body">
+<header th:replace="~{fragments/commons::nav}"></header>
 
 <main>
-   <div class="border">
+   <div id="border">
     <form>
-      <h3>Add event</h3>
+      <h3 class="h-custom">Add event</h3>
         <div class="field">
-            <Label for="name">Name</Label>
-            <input class="name" type="text" placeholder="Name">
+
+         <div>
+            <Label for="name">Name of event:</Label>
+         </div>
+         <input class="form-control" type="text" placeholder="Name">
+         <small class="text-danger invalid-feedback">Error message name</small>  
          </div>
 
          <div class="field">
-            <label for="description">Description</label>
-            <textarea name="text" id="description" cols="30" rows="10"></textarea>
+
+            <div>
+               <label for="description">Description:</label>
+            </div>
+            <textarea name="text" id="description" cols="30" rows="10" class="form-control"></textarea>
+            <small class="text-danger invalid-feedback">Error message desc</small>  
          </div>
 
          <div class="field">
-            <Label for="date">Date</Label>
-            <input class="date" type="date" >
+
+            <div>
+               <Label for="date">Date:</Label>
+            </div>
+            <input class="form-control" type="date" >
+            <small class="text-danger invalid-feedback">Error message date</small>  
          </div>
 
          <div class="button">
-            <button>Add event</button>
+            <button class="button-custom">Add event</button>
          </div>
     </form>
 </div> 
 </main>
 
-<footer></footer>
+<footer th:replace="~{fragments/commons::footer}"></footer>
     
 </body>
 </html>

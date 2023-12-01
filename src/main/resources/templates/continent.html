@@ -1,29 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="continent.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/continent.css">
+    <link rel="stylesheet" href="/css/home.css">
     <title>All Sunsets</title>
 </head>
 <body>
 
-    <header></header>
+    <header th:replace="~{fragments/commons::nav}"></header>
     <main>
         <div class="images">
-            <img src="image/africa.jpg" alt="Africa">
-            <img src="image/antarctica.jpg" alt="Antartica">
-            <img src="image/asia.jpg" alt="Asia">
-            <img src="image/australia.jpg" alt="Australia">
-            <img src="image/europe.jpg" alt="Europe">
-            <img src="image/north_america.jpg" alt="North America">
-            <img src="image/south_america.jpg" alt="South America">
+            <img class="photoes" src="images/africa.jpg" alt="Africa">
+            <img class="photoes" src="images/antarctica.jpg" alt="Antartica">
+            <img class="photoes" src="images/asia.jpg" alt="Asia">
+            <img class="photoes" src="images/australia.jpg" alt="Australia">
+            <img class="photoes" src="images/europe.jpg" alt="Europe">
+            <img class="photoes" src="images/north_america.jpg" alt="North America">
+            <img class="photoes" src="images/south_america.jpg" alt="South America">
            
         </div>
+
+
+        <div class="feed">
+            <div class="users-post">
+                <div class="info">
+                    <span>NAME</span>
+                    <span>LOCATION</span>
+                </div>
+                <div class="photo">
+                    <img src="images/africa.jpg" alt="IMAGE">
+                </div>
+                
+                
+            </div>
     </main>
 
-    <footer></footer>
+    <footer th:replace="~{fragments/commons::footer}"></footer>
     
 </body>
 </html>

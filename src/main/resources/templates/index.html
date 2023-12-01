@@ -1,23 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <title>IntroPage</title>
+
+
+
+    <script>
+        function redirectToLogin() {
+          window.location.href = "/login";
+        }
+
+        function redirectToRegister(){
+            window.location.href="/register";
+        }
+
+      </script>
 </head>
 <body>
     
-<header></header>
+<header th:replace="~{fragments/commons::nav}"></header>
     <main>
         <section>
             <div class="main-intro">
                 <h1>WELCOME TO 'NAME"</h1>
                 <p>Share the beautiful sunsets with people all around the world</p>
                 <div class="buttons">
-                    <button>Login</button>
-                    <button>Register</button>
+                    <button onclick="redirectToLogin()">Login</button>
+                    <button onclick="redirectToRegister()">Register</button>
                 </div>
             </div>
         </section>
@@ -25,20 +39,20 @@
 
         <section class="site-intro">
             <div>
-                <img src="image/sunset.png" alt="">
+                <img src="images/sunset.png" alt="">
                 <p>Capture amazing sunsets</p>
             </div>
             <div>
-                <img src="image/partners.png" alt="">
+                <img src="images/partners.png" alt="">
                 <p>Share them with your comunity</p>
             </div>
             <div>
-                <img src="image/pencil.png" alt="">
+                <img src="images/pencil.png" alt="">
                 <p>Share your experiences</p>
             </div>
         </section>
     </main>
 
-    <footer></footer>
+    <footer th:replace="~{fragments/commons::footer}"></footer>
 </body>
 </html>

@@ -1,20 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <title>Contact us</title>
 </head>
 <body>
-    <header></header>
+    <header th:replace="~{fragments/commons::nav}"></header>
 
     <main>
-        <div>
-            <p>A page where you can see our contacts</p>
-            <p>example@email.com etc.</p>
-        </div>
+        <div class="card border-dark mb-3" style="max-width: 18rem;">
+            <div class="card-header">Header</div>
+            <div class="card-body text-dark">
+              <h5 class="card-title">Dark card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
     </main>
 
-    <footer></footer>
+    <footer th:replace="~{fragments/commons::footer}"></footer>
 </body>
 </html>

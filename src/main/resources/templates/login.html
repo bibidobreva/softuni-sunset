@@ -1,37 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <title>Login</title>
 </head>
-<body>
-<header></header>
+<body id="body">
+<header th:replace="~{fragments/commons::nav}"></header>
 
 <main>
-   <div class="border">
+   <div id="border">
     <form>
-      <h3>Login</h3>
+       <h3 class="h-custom">Login</h3>
+
         <div class="field">
-            <Label for="username">Username</Label>
-            <input class="username" type="text" placeholder="Username">
+            <div>
+               <Label for="username">Username:</Label>              
+            </div>           
+            <input type="text" class="form-control" id="username" name="username" placeholder="Username"
+            th:field="*{username}"
+            th:errorclass="is-invalid alert-danger">
+            <small class="text-danger invalid-feedback" >Error message username</small>           
          </div>
 
+   
+         
          <div class="field">
-            <label for="password">Password</label>
-            <input type="password", class="password" placeholder="Password">
+            <div>
+               <label for="password">Password:</label>
+            </div>
+
+            <input type="password", class="form-control" placeholder="Password">
+            <small class="text-danger invalid-feedback">Error message password</small>
+            
          </div>
 
          <div class="button">
-            <button>Login</button>
+            <button class="button-custom">Login</button>
          </div>
     </form>
 </div> 
 </main>
 
-<footer></footer>
+<footer th:replace="~{fragments/commons::footer}"></footer>
     
 </body>
 </html>

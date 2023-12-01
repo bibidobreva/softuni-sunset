@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,7 @@
     <title>Home</title>
 </head>
 <body>
-    <header></header>
+    <header th:replace="~{fragments/commons::nav}"></header>
 
     <main>
         <div class="feed">
@@ -18,24 +19,15 @@
                     <span>LOCATION</span>
                 </div>
                 <div class="photo">
-                    <img src="image/africa.jpg" alt="IMAGE">
+                    <img src="images/africa.jpg" alt="IMAGE">
                 </div>
                 <button>Like!</button>
                 
             </div>
 
-            <div class="users-post">
-                <div class="info">
-                    <span>NAME</span>
-                    <span>LOCATION</span>
-                </div>
-                <div class="photo">
-                    <img src="image/africa.jpg" alt="IMAGE">
-                </div>
-                <button>Like!</button>
-        </div>
+
     </main>
 
-    <footer></footer>
+    <footer th:replace="~{fragments/commons::footer}"></footer>
 </body>
 </html>
