@@ -4,14 +4,16 @@ import com.project.softunisunset.models.dto.UserRegistrationDTO;
 import com.project.softunisunset.service.AuthService;
 import com.project.softunisunset.session.LoggedUser;
 import jakarta.validation.Valid;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 
-
+@Controller
 public class RegistrationController {
 
 
@@ -23,15 +25,19 @@ public class RegistrationController {
         this.authService = authService;
     }
 
+    @ModelAttribute("userRegistrationDTO")
+    public UserRegistrationDTO initRegistrationDTO(){
+        return  new UserRegistrationDTO();
+    }
 
     @GetMapping("/register")
     public String register() {
-        long loggedUserId = loggedUser.getId();
+//        long loggedUserId = loggedUser.getId();
 
-        //TODO do i need that
-        if(loggedUserId!=0){
-            return "redirect:/home";
-        }
+//        //TODO do i need that
+//        if(loggedUserId!=0){
+//            return "redirect:/home";
+//        }
         return "register";
     }
 
@@ -46,10 +52,10 @@ public class RegistrationController {
             return "redirect:/register";
         }
 
-        long loggedUserId = loggedUser.getId();
-        if(loggedUserId!=0){
-            return "redirect:/home";
-        }
+//        long loggedUserId = loggedUser.getId();
+//        if(loggedUserId!=0){
+//            return "redirect:/home";
+//        }
 
         return "redirect:login";
     }

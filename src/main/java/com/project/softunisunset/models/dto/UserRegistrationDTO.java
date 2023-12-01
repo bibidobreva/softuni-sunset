@@ -9,6 +9,11 @@ public class UserRegistrationDTO {
     @NotBlank
     private String username;
 
+    @Size(min = 3, max = 20)
+    private String firstName;
+
+    @Size(min = 3, max = 20)
+    private String lastName;
 
     @Email
     @NotBlank
@@ -56,5 +61,21 @@ public class UserRegistrationDTO {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

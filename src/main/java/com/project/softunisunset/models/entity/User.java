@@ -24,8 +24,7 @@ public class User extends BaseEntity {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(nullable = false)
-    private LocalDate birthdate;
+
 
     @OneToMany(mappedBy = "user")
     private List<Sunset> sunsets;
@@ -83,13 +82,7 @@ public class User extends BaseEntity {
         this.lastName = lastName;
     }
 
-    public LocalDate getBirthdate() {
-        return birthdate;
-    }
 
-    public void setBirthdate(LocalDate birthdate) {
-        this.birthdate = birthdate;
-    }
 
     public List<Sunset> getSunsets() {
         return sunsets;
