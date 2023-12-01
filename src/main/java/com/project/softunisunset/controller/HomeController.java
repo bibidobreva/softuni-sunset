@@ -23,12 +23,12 @@ public class HomeController {
     public String loggedOutIndex(){
 
         //TODO
-        long loggedUserId = this.loggedUser.getId();
-
-
-        if(loggedUserId!=0){
-            return "redirect:/home";
-        }
+//        long loggedUserId = this.loggedUser.getId();
+//
+//
+//        if(loggedUserId!=0){
+//            return "redirect:/home";
+//        }
         return "index";
     }
 

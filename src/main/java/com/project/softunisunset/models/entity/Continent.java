@@ -12,7 +12,7 @@ public class Continent extends BaseEntity{
     @Column(nullable = false)
     private ContinentName name;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "text")
     private String description;
 
     @OneToMany(mappedBy = "continent")
@@ -58,6 +58,7 @@ public class Continent extends BaseEntity{
             case EUROPE:desc = "Renowned for its historical significance, Europe is a continent of diverse cultures, languages, and landscapes. From the romantic allure of Paris to the ancient ruins of Rome, it has played a pivotal role in shaping global politics, art, and philosophy.";
             break;
             case ANTARCTICA:desc = "The southernmost continent, Antarctica is a vast, icy wilderness. It's known for its extreme cold, unique wildlife like penguins and seals, and scientific research stations. With no permanent population, it's a haven for international scientific cooperation.";
+            break;
             case NORTH_AMERICA: desc = "Home to the United States and Canada, North America features vast landscapes, from the Rocky Mountains to the Great Plains. Iconic landmarks like the Grand Canyon and the Statue of Liberty are found here, along with a rich tapestry of cultures.";
             break;
             case SOUTH_AMERICA:desc = "Known for the Amazon Rainforest and the Andes Mountains, South America is a continent of ecological and cultural richness. Vibrant cities like Rio de Janeiro and Buenos Aires coexist with ancient ruins, such as Machu Picchu in Peru.";

@@ -3,6 +3,7 @@ package com.project.softunisunset.init;
 import com.project.softunisunset.models.entity.Continent;
 import com.project.softunisunset.models.enums.ContinentName;
 import com.project.softunisunset.repositories.ContinentRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +21,9 @@ public class ContinentSeeder implements CommandLineRunner {
     }
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
+
         if (this.continentRepository.count()<=0){
             List<Continent> continents = new ArrayList<>();
 

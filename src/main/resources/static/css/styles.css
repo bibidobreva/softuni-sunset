@@ -12,7 +12,7 @@ header, .footer{
 
 
 .main-intro{
-    background-image: url(image/sunset.jpg);
+    background-image: url(/images/sunset.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 100% auto;

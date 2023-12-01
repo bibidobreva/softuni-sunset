@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class LoginController {
     @GetMapping("/users/login")
     public String login() {
-        return "auth-login";
+        return "login";
     }
 
     @PostMapping("/users/login-error")
