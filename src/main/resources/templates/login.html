@@ -14,7 +14,8 @@ xmlns:th="http://www.thymeleaf.org">
 
 <main>
    <div id="border">
-    <form>
+    <form th:action="@{/login}" th:method="POST"
+         >
        <h3 class="h-custom">Login</h3>
 
         <div class="field">
@@ -22,7 +23,7 @@ xmlns:th="http://www.thymeleaf.org">
                <Label for="username">Username:</Label>              
             </div>           
             <input type="text" class="form-control" id="username" name="username" placeholder="Username"
-            th:field="*{username}"
+            th:value="*{username}"
             th:errorclass="is-invalid alert-danger">
             <small class="text-danger invalid-feedback" >Error message username</small>           
          </div>
