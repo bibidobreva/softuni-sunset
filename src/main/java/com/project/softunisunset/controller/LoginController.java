@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 
 public class LoginController {
-    @GetMapping("/users/login")
+    @GetMapping("/login")
     public String login() {
         return "login";
     }
 
-    @PostMapping("/users/login-error")
+    @PostMapping("/login-error")
     public String onFailure(
             @ModelAttribute("username") String email, Model model) {
 
         model.addAttribute("email", email);
         model.addAttribute("bad_credentials", "true");
 
-        return "auth-login";
+        return "login-error";
     }
 }

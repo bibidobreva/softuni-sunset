@@ -34,7 +34,9 @@ xmlns:th="http://www.thymeleaf.org">
                <label for="password">Password:</label>
             </div>
 
-            <input type="password", class="form-control" placeholder="Password">
+            <input type="password" class="form-control" placeholder="Password" id="password"
+                   th:field="*{password}"
+                   th:errorclass="is-invalid alert-danger">>
             <small class="text-danger invalid-feedback">Error message password</small>
             
          </div>

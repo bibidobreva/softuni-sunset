@@ -2,7 +2,6 @@ package com.project.softunisunset.models.entity;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
