@@ -24,9 +24,9 @@ xmlns:th="http://www.thymeleaf.org">
             <h3 class="h-custom"> Write your story here</h3>
             <div class="field">
                 <div>
-                    <label for="text">Name of story:</label>
+                    <label for="name">Name of story:</label>
                 </div>
-                <input type="text" class="form-control" id="name" placeholder="Story name" id="text"
+                <input type="text" class="form-control" id="name" placeholder="Story name"
                 th:field = "*{name}"
                 th:errorclass = "is-invalid alert-danger">
                 <small class="text-danger invalid-feedback">Error message name</small>
@@ -36,16 +36,16 @@ xmlns:th="http://www.thymeleaf.org">
             <div class="field">
 
                 <div>
-                    <label for="">Story:</label>
+                    <label for="story">Story:</label>
                 </div>
-                <textarea class="form-control" name="text" id="" cols="30" rows="10" placeholder="Write your story here..."
+                <textarea class="form-control" name="text" id="story" cols="30" rows="10" placeholder="Write your story here..."
                           th:field = "*{story}"
                           th:errorclass = "is-invalid alert-danger"></textarea>
                 <small class="text-danger invalid-feedback">Error message story</small>
             </div>
 
             <div class="button">
-                <button type="submit" class="button-custom">Post Story</button>
+                <button  class="button-custom">Post Story</button>
             </div>
            </form>
         </div>
@@ -55,8 +55,8 @@ xmlns:th="http://www.thymeleaf.org">
             <h3 class="h-custom">Peoples stories</h3>
 
             <div id="content" th:each = "story:${storyList}">
-                <span th:text="${story.getName()">NAME</span>
-                <p th:text = "${story.getStory()">The story that the person is telling, his experience!</p>
+                <span th:text="${story.getName()}">NAME</span>
+                <p th:text = "${story.getStory()}">The story that the person is telling, his experience!</p>
             </div>
         </div>
     </main>

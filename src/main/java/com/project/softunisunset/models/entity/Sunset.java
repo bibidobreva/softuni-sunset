@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
+import java.util.Base64;
 
 @Table
 @Entity
@@ -68,5 +69,8 @@ public class Sunset extends BaseEntity{
 
     public void setContinent(Continent continent) {
         this.continent = continent;
+    }
+    public String getBase64Photo() {
+        return Base64.getEncoder().encodeToString(photo);
     }
 }

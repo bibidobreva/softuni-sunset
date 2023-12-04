@@ -20,7 +20,7 @@ public class SpringSecurityConfiguration {
         httpSecurity.authorizeHttpRequests(
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/", "/login", "/register").permitAll()
+                        .requestMatchers("/", "/login", "/register","/events","/contacts","/about").permitAll()
                         .requestMatchers("/events/add").hasRole(UserRolesEnums.ADMIN.name())
                         .anyRequest().authenticated()
         ).formLogin(

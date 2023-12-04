@@ -7,6 +7,7 @@ import com.project.softunisunset.repositories.StoryRepository;
 import com.project.softunisunset.repositories.UserRepository;
 import com.project.softunisunset.session.LoggedUser;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -28,16 +29,20 @@ public class StoryService {
 
 
     public boolean createStory(CreateStoryDTO createStoryDTO){
-        Story story = new Story();
 
-        //to check user
-        Optional<User> currentUser = userRepository.findById(loggedUser.getId());
+
+
+        String loggedInUsername = SecurityContextHolder.getContext().getAuthentication().getName();
+        Optional<User> currentUser = this.userRepository.findByUsername(loggedInUsername);
 
         if(currentUser.isEmpty()){
             return false;
         }
 
-        this.storyRepository.save(this.modelMapper.map(createStoryDTO, Story.class));
+        Story userStory =this.modelMapper.map(createStoryDTO, Story.class);
+        userStory.setUser(currentUser.get());
+
+        this.storyRepository.save(userStory);
 
         return true;
     }

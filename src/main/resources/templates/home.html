@@ -13,17 +13,19 @@ xmlns:th="http://www.thymeleaf.org">
 
     <main>
         <div class="feed">
-            <div class="users-post">
+            <div class="users-post" th:each="post:${feedSunsets}">
                 <div class="info">
-                    <span>NAME</span>
-                    <span>LOCATION</span>
+                    <span th:text="${post.getUser().getUsername()}">NAME</span>
+                    <span th:text="${post.getLocation()}">LOCATION</span>
                 </div>
                 <div class="photo">
-                    <img src="images/africa.jpg" alt="IMAGE">
+                    <img th:src="'data:image/png;base64,' + ${post.getBase64Photo()}" alt="Sunset Photo">
                 </div>
+
+
                 <button>Like!</button>
-                
             </div>
+        </div>
 
 
     </main>
