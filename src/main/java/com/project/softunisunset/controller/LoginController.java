@@ -1,6 +1,7 @@
 package com.project.softunisunset.controller;
 
 
+import com.project.softunisunset.models.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 
+
 public class LoginController {
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model) {
+        model.addAttribute("user", new User());
         return "login";
     }
 
@@ -24,6 +27,6 @@ public class LoginController {
         model.addAttribute("username", username);
         model.addAttribute("bad_credentials", "true");
 
-        return "login-error";
+        return "login";
     }
 }

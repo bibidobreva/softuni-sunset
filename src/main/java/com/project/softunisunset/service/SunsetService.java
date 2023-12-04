@@ -21,27 +21,27 @@ public class SunsetService {
     private final SunsetRepository sunsetRepository;
     private final ContinentRepository continentRepository;
     private final ModelMapper modelMapper;
-    private LoggedUser loggedUser;
 
-    public SunsetService(UserRepository userRepository, SunsetRepository sunsetRepository, ContinentRepository continentRepository, ModelMapper modelMapper, LoggedUser loggedUser) {
+
+    public SunsetService(UserRepository userRepository, SunsetRepository sunsetRepository, ContinentRepository continentRepository, ModelMapper modelMapper) {
         this.userRepository = userRepository;
         this.sunsetRepository = sunsetRepository;
         this.continentRepository = continentRepository;
         this.modelMapper = modelMapper;
-        this.loggedUser = loggedUser;
+
     }
 
     public boolean createSunset(CreateSunsetDTO createSunsetDTO){
 
         ContinentName continentName = ContinentName.valueOf(createSunsetDTO.getContinent());
 
-        Optional<User> currentUser = userRepository.findById(loggedUser.getId());
+
 
         Optional<Continent> continent = this.continentRepository.findByName(continentName);
 
 
 
-        if(continent.isEmpty()|| currentUser.isEmpty()){
+        if(continent.isEmpty()){
             return false;
         }
 

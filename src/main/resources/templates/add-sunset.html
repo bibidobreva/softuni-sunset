@@ -17,13 +17,18 @@ xmlns:th="http://www.thymeleaf.org">
 
 
         <div id="border">
-            <form>
+            <form
+                    th:method="POST"
+                    th:action="@{/sunset/add}"
+                    th:object="${createSunsetDTO}">
                 <h3 class="h-custom">Add a sunset photo</h3>
                 <div class="field">
 
                     <div>
                         <Label for="location">Location:</Label>
-                        <input class="form-control" type="text" placeholder="Location">
+                        <input class="form-control" type="text" placeholder="Location" name="location" id="location"
+                               th:field = "*{location}"
+                               th:errorclass="is-invalid alert-danger">
                     </div>
                     <small class="text-danger invalid-feedback">Error message location</small>
                  </div>
@@ -32,7 +37,9 @@ xmlns:th="http://www.thymeleaf.org">
                     <div>
                         <Label for="date">Date:</Label>
                     </div>
-                    <input class="form-control" type="date" >
+                    <input class="form-control" type="date" id="date"
+                           th:field = "*{date}"
+                           th:errorclass="is-invalid alert-danger">
                     <small class="text-danger invalid-feedback">Error message date</small>
                  </div>
         
@@ -40,10 +47,12 @@ xmlns:th="http://www.thymeleaf.org">
                     <div>
                         <Label for="continent">Continent:</Label>
                     </div>
-                    <select class="form-control">
+                    <select class="form-control" id="continent"
+                            th:field = "*{continent}"
+                            th:errorclass="is-invalid alert-danger">
                         <option value="">Select Continent</option>
                         <option value="AFRICA">Africa</option>
-                        <option value="ANTARRCTICA">Antartica</option>
+                        <option value="ANTARCTICA">Antarctica</option>
                         <option value="ASIA">Asia</option>
                         <option value="AUSTRALIA">Australia</option>
                         <option value="EUROPE">Europe</option>
@@ -57,7 +66,9 @@ xmlns:th="http://www.thymeleaf.org">
                     <div>
                         <label for="photo">Choose a Photo:</label>
                     </div>
-                    <input class="form-control" type="file" name="file" id="photo" accept="image/*" required >
+                    <input class="form-control" type="file" name="file" id="photo" accept="image/*" required
+                           th:field = "*{photo}"
+                           th:errorclass="is-invalid alert-danger">
                     <small class="text-danger invalid-feedback">Error message file</small>
                 </div>
 

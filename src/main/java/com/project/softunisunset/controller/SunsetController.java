@@ -30,11 +30,11 @@ public class SunsetController {
     }
 
 
-    @GetMapping("sunset/add")
+    @GetMapping("/sunset/add")
     public String sunsets(){
         //TODO
 
-        return "sunset-add";
+        return "add-sunset";
     }
 
     @PostMapping("/sunset/add")

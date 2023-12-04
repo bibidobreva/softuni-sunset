@@ -9,6 +9,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -26,12 +28,30 @@ public class UserService {
     }
 
 
-    public void register(UserRegistrationDTO userRegistrationDTO){
-        userRegistrationDTO.setPassword(passwordEncoder.encode(userRegistrationDTO.getPassword()));
-        this.userRepository.save(this.modelMapper.map(userRegistrationDTO, User.class));
+    public boolean register(UserRegistrationDTO registrationDTO) {
+        if (!registrationDTO.getPassword().equals(registrationDTO.getConfirmPassword())) {
+            return false;
+        }
+
+        Optional<User> byEmail = this.userRepository.findByEmail(registrationDTO.getEmail());
+        Optional<User> byUsername = this.userRepository.findByUsername(registrationDTO.getUsername());
+
+        if (byEmail.isPresent() || byUsername.isPresent()) {
+            return false;
+        }
+
+//        User user = new User();
+//        user.setUsername(registrationDTO.getUsername());
+//        user.setEmail(registrationDTO.getEmail());
+//        user.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
+
+//TODO
+        registrationDTO.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
+
+
+        this.userRepository.save(this.modelMapper.map(registrationDTO, User.class));
+        return true;
     }
 
-    //TODO
-    public void assignRole(Long userId, String role) {
-    }
+
 }

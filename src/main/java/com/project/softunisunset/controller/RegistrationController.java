@@ -1,7 +1,7 @@
 package com.project.softunisunset.controller;
 
 import com.project.softunisunset.models.dto.UserRegistrationDTO;
-import com.project.softunisunset.service.AuthService;
+import com.project.softunisunset.service.UserService;
 import com.project.softunisunset.session.LoggedUser;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -18,11 +18,11 @@ public class RegistrationController {
 
 
     private LoggedUser loggedUser;
-    private AuthService authService;
+    private UserService userService;
 
-    public RegistrationController(LoggedUser loggedUser, AuthService authService) {
+    public RegistrationController(LoggedUser loggedUser, UserService authService) {
         this.loggedUser = loggedUser;
-        this.authService = authService;
+        this.userService = authService;
     }
 
     @ModelAttribute("userRegistrationDTO")
@@ -45,7 +45,7 @@ public class RegistrationController {
     @PostMapping("/register")
     public String register(@Valid UserRegistrationDTO registrationDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
-        if (bindingResult.hasErrors()||!this.authService.register(registrationDTO)) {
+        if (bindingResult.hasErrors()||!this.userService.register(registrationDTO)) {
             redirectAttributes.addFlashAttribute("registrationDTO", registrationDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.registrationDTO", bindingResult);
 
@@ -61,10 +61,10 @@ public class RegistrationController {
     }
 
 
-    @GetMapping("/logout")
-    public String logout(){
-        this.authService.logout();
-
-        return "redirect:/";
-    }
+//    @GetMapping("/logout")
+//    public String logout(){
+//        this.authService.logout();
+//
+//        return "redirect:/";
+//    }
 }

@@ -15,30 +15,23 @@ public class HomeController {
     private SunsetService sunsetService;
 
 
-    public HomeController(LoggedUser loggedUser) {
+    public HomeController(LoggedUser loggedUser, SunsetService sunsetService) {
         this.loggedUser = loggedUser;
+        this.sunsetService = sunsetService;
     }
 
     @GetMapping("/")
     public String loggedOutIndex(){
 
         //TODO
-//        long loggedUserId = this.loggedUser.getId();
-//
-//
-//        if(loggedUserId!=0){
-//            return "redirect:/home";
-//        }
+
         return "index";
     }
 
 
     @GetMapping("/home")
     public String LoggedIndex(Model model){
-        long loggedUserId = this.loggedUser.getId();
-        if(loggedUserId==0){
-            return "redirect:/";
-        }
+
 
         List<Sunset> sunsets = this.sunsetService.getAllSunsets();
 
