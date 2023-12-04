@@ -7,6 +7,7 @@ xmlns:th="http://www.thymeleaf.org">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/continent.css">
     <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <title>All Sunsets</title>
 </head>
 <body>
@@ -14,32 +15,79 @@ xmlns:th="http://www.thymeleaf.org">
     <header th:replace="~{fragments/commons::nav}"></header>
     <main>
         <div class="images">
-            <img class="photoes" src="images/africa.jpg" alt="Africa">
-            <img class="photoes" src="images/antarctica.jpg" alt="Antartica">
-            <img class="photoes" src="images/asia.jpg" alt="Asia">
-            <img class="photoes" src="images/australia.jpg" alt="Australia">
-            <img class="photoes" src="images/europe.jpg" alt="Europe">
-            <img class="photoes" src="images/north_america.jpg" alt="North America">
-            <img class="photoes" src="images/south_america.jpg" alt="South America">
+            <img class="photoes" src="src/main/resources/static/images/africa.jpg" alt="Africa" onclick="showPhotos('Africa')">
+            <img class="photoes" src="src/main/resources/static/images/antarctica.jpg" alt="Antarctica" onclick="showPhotos('Antarctica')">
+            <img class="photoes" src="src/main/resources/static/images/asia.jpg" alt="Asia" onclick="showPhotos('Asia')">
+            <img class="photoes" src="images/australia.jpg" alt="Australia" onclick="showPhotos('Australia')">
+            <img class="photoes" src="images/europe.jpg" alt="Europe" onclick="showPhotos('Europe')">
+            <img class="photoes" src="images/north_america.jpg" alt="North America" onclick="showPhotos('North America')">
+            <img class="photoes" src="images/south_america.jpg" alt="South America" onclick="showPhotos('South America')">
            
         </div>
 
 
-        <div class="feed">
-            <div class="users-post">
-                <div class="info">
-                    <span>NAME</span>
-                    <span>LOCATION</span>
-                </div>
-                <div class="photo">
-                    <img src="images/africa.jpg" alt="IMAGE">
-                </div>
+        <div class="feed" id="feed">
+
                 
                 
-            </div>
+
+        </div>
     </main>
 
     <footer th:replace="~{fragments/commons::footer}"></footer>
-    
+
+
+    <script>
+        function showPhotos(continent) {
+
+            var photos = getPhotosForContinent(continent);
+
+
+            var feedContainer = document.getElementById('feed');
+            feedContainer.innerHTML = '';
+
+            photos.forEach(function (photo) {
+                var userPost = document.createElement('div');
+                userPost.className = 'users-post';
+
+                var info = document.createElement('div');
+                info.className = 'info';
+                info.innerHTML = '<span>' + continent + '</span>';
+
+                var photoDiv = document.createElement('div');
+                photoDiv.className = 'photo';
+                var img = document.createElement('img');
+                img.src = photo;
+                img.alt = 'IMAGE';
+                photoDiv.appendChild(img);
+
+                userPost.appendChild(info);
+                userPost.appendChild(photoDiv);
+                feedContainer.appendChild(userPost);
+            });
+        }
+
+        function getPhotosForContinent(continent) {
+
+            if (continent === 'Africa') {
+                return ['photo1_africa.jpg', 'photo2_africa.jpg', 'photo3_africa.jpg'];
+            } else if (continent === 'Antarctica') {
+                return ['photo1_antarctica.jpg', 'photo2_antarctica.jpg', 'photo3_antarctica.jpg'];
+            } else if (continent === 'Asia') {
+                return ['photo1_asia.jpg', 'photo2_asia.jpg', 'photo3_asia.jpg'];
+            } else if (continent === 'Australia') {
+                return ['photo1_australia.jpg', 'photo2_australia.jpg', 'photo3_australia.jpg'];
+            } else if (continent === 'Europe') {
+                return ['photo1_europe.jpg', 'photo2_europe.jpg', 'photo3_europe.jpg'];
+            } else if (continent === 'North America') {
+                return ['photo1_north_america.jpg', 'photo2_north_america.jpg', 'photo3_north_america.jpg'];
+            } else if (continent === 'South America') {
+                return ['photo1_south_america.jpg', 'photo2_south_america.jpg', 'photo3_south_america.jpg'];
+            }
+
+
+            return [];
+        }
+    </script>
 </body>
 </html>

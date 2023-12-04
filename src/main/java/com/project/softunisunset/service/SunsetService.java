@@ -12,6 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,6 +58,19 @@ public class SunsetService {
 
 
         return true;
+    }
+
+
+
+    public List<Sunset> getAllSunsetsByContinent(ContinentName continentName) {
+        Optional<Continent> continent = this.continentRepository.findByName(continentName);
+
+        if (continent.isEmpty()) {
+
+            return Collections.emptyList();
+        }
+
+        return this.sunsetRepository.findAllByContinent(continent.get());
     }
 
 
