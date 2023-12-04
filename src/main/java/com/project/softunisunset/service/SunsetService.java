@@ -8,8 +8,8 @@ import com.project.softunisunset.models.enums.ContinentName;
 import com.project.softunisunset.repositories.ContinentRepository;
 import com.project.softunisunset.repositories.SunsetRepository;
 import com.project.softunisunset.repositories.UserRepository;
-import com.project.softunisunset.session.LoggedUser;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,17 +35,24 @@ public class SunsetService {
 
         ContinentName continentName = ContinentName.valueOf(createSunsetDTO.getContinent());
 
-
+        String loggedInUsername = SecurityContextHolder.getContext().getAuthentication().getName();
+        Optional<User> optionalUser = this.userRepository.findByUsername(loggedInUsername);
 
         Optional<Continent> continent = this.continentRepository.findByName(continentName);
 
 
 
-        if(continent.isEmpty()){
+        if(continent.isEmpty()|| optionalUser.isEmpty()){
             return false;
         }
 
-        this.sunsetRepository.save(this.modelMapper.map(createSunsetDTO, Sunset.class));
+
+        Sunset sunset = this.modelMapper.map(createSunsetDTO, Sunset.class);
+
+        sunset.setUser(optionalUser.get());
+        sunset.setContinent(continent.get());
+
+        this.sunsetRepository.save(sunset);
 
 
 

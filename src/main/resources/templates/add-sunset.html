@@ -72,6 +72,7 @@ xmlns:th="http://www.thymeleaf.org">
                     <small class="text-danger invalid-feedback">Error message file</small>
                 </div>
 
+                <input type="hidden" th:field="*{user.username}" th:value="${#authentication.name}">
                 <div class="button">
                     <button class="button-custom">Add sunset</button>
                 </div>
