@@ -4,7 +4,9 @@ import com.project.softunisunset.models.dto.CreateEventDTO;
 import com.project.softunisunset.models.entity.Event;
 import com.project.softunisunset.repositories.EventRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
+@Service
 public class EventService {
     private final EventRepository eventRepository;
     private final ModelMapper modelMapper;
