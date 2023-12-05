@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,17 +12,21 @@ xmlns:th="http://www.thymeleaf.org">
     <header>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Add sunset</a></li>
-                <li><a href="#">All sunsets</a></li>
-                <li><a href="#">Contact us</a></li>
+                <li><a href="/home" sec:authorize="isAuthenticated()">Home</a></li>
+                <li><a href="/" sec:authorize="!isAuthenticated()">Home</a></li>
+                <li><a href="/sunset/add" sec:authorize="isAuthenticated()">Add sunset</a></li>
+                <li><a href="/sunset/continent" sec:authorize="isAuthenticated()">All sunsets</a></li>
+                <li><a href="/contacts">Contact us</a></li>
+                <li><a href="/about">About us</a></li>
             </ul>
 
             <ul>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Register</a></li>
-                <li><a href="#">Logout</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a href="/login" sec:authorize="!isAuthenticated()">Login</a></li>
+                <li><a href="/register" sec:authorize="!isAuthenticated()">Register</a></li>
+                <li><a href="/events" sec:authorize="isAuthenticated()">Events</a></li>
+                <li><a href="/profile" sec:authorize="isAuthenticated()">Profile</a></li>
+                <li><a href="/logout" sec:authorize="isAuthenticated()">Logout</a></li>
+
             </ul>
         </nav>
     </header>
