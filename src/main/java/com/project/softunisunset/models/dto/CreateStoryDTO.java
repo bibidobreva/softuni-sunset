@@ -20,7 +20,6 @@ public class CreateStoryDTO {
     private String story;
 
     @PastOrPresent
-
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
 

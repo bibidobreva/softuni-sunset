@@ -2,6 +2,8 @@ package com.project.softunisunset.service;
 
 import com.project.softunisunset.models.dto.UserRegistrationDTO;
 import com.project.softunisunset.models.entity.User;
+import com.project.softunisunset.models.entity.UserRoleEntity;
+import com.project.softunisunset.models.enums.UserRolesEnums;
 import com.project.softunisunset.repositories.StoryRepository;
 import com.project.softunisunset.repositories.SunsetRepository;
 import com.project.softunisunset.repositories.UserRepository;
@@ -9,6 +11,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,12 +44,20 @@ public class UserService {
             return false;
         }
 
-//        User user = new User();
-//        user.setUsername(registrationDTO.getUsername());
-//        user.setEmail(registrationDTO.getEmail());
-//        user.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
+        UserRoleEntity userRoleEntity = new UserRoleEntity();
+        if (userRepository.count() == 0) {
 
-//TODO
+            userRoleEntity.setRole(UserRolesEnums.ADMIN);
+        } else {
+            userRoleEntity.setRole(UserRolesEnums.USER);
+        }
+
+
+        List<UserRoleEntity> roles = new ArrayList<>();
+        roles.add(userRoleEntity);
+
+        registrationDTO.setRoles(roles);
+
         registrationDTO.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
 
 
