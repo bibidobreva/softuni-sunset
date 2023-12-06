@@ -54,26 +54,7 @@ header, .footer{
     
 }
 
-nav{
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-}
 
-nav ul{
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    list-style: none;
-    font-weight: 500;
-}
-
-nav ul li a{
-    color: #28241F;
-    font-size: 25px;
-    text-decoration: none;
-    
-}
 
 .site-intro{
     background-color: whitesmoke;
@@ -95,9 +76,3 @@ nav ul li a{
 
 }
 
-
-.footer p{
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}

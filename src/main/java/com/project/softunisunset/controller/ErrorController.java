@@ -11,8 +11,5 @@ public class ErrorController {
         return "error/errors";
     }
 
-    @GetMapping("/errors")
-    public String error(){
-        return "error/errors";
-    }
+
 }
