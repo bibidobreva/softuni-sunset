@@ -44,7 +44,7 @@ public class StoryController {
         return "blog";
     }
 
-    @PostMapping("/blog")
+    @PostMapping("/blog/add")
     public String storiesAdd(@Valid CreateStoryDTO createStoryDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
 
         createStoryDTO.setDate(LocalDate.now());
@@ -52,6 +52,7 @@ public class StoryController {
             redirectAttributes.addFlashAttribute("createStoryDTO", createStoryDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.createStoryDTO", bindingResult);
 
+            System.out.println("Error in form submission or creating story");
             List<Story> storyList = this.storyRepository.findAll();
             model.addAttribute("storyList", storyList);
 
@@ -61,6 +62,8 @@ public class StoryController {
 
         List<Story> storyList = this.storyRepository.findAll();
         model.addAttribute("storyList",storyList);
+
+        System.out.println("Form submitted successfully");
         return "redirect:/blog";
     }
 }

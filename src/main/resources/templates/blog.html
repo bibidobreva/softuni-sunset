@@ -19,7 +19,7 @@ xmlns:th="http://www.thymeleaf.org">
         <div id="border">
 
            <form th:method="POST"
-                 th:action="@{/blog}"
+                 th:action="@{/blog/add}"
                  th:object="${createStoryDTO}">
 
             <h3 class="h-custom"> Write your story here</h3>
@@ -45,6 +45,7 @@ xmlns:th="http://www.thymeleaf.org">
                 <small class="text-danger invalid-feedback">Error message story</small>
             </div>
 
+               <input type="hidden" th:field="*{date}" th:value="${createStoryDTO.date}" />
             <div class="button">
                 <button  class="button-custom">Post Story</button>
             </div>

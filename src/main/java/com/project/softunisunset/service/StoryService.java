@@ -16,14 +16,14 @@ import java.util.Optional;
 public class StoryService {
     private final StoryRepository storyRepository;
     private final ModelMapper modelMapper;
-    private LoggedUser loggedUser;
+
     private final UserRepository userRepository;
 
 
-    public StoryService(StoryRepository storyRepository, ModelMapper modelMapper, LoggedUser loggedUser, UserRepository userRepository) {
+    public StoryService(StoryRepository storyRepository, ModelMapper modelMapper, UserRepository userRepository) {
         this.storyRepository = storyRepository;
         this.modelMapper = modelMapper;
-        this.loggedUser = loggedUser;
+
         this.userRepository = userRepository;
     }
 
