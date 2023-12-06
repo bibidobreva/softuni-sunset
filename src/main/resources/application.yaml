@@ -25,6 +25,19 @@ logging:
         SQL: DEBUG
       nodeValue: WARN
     blog: WARN
+  mail:
+    host: smtp.example.com  # Replace with your SMTP server host
+    port: 587  # Replace with your SMTP server port
+    username: sunset@example.com  # Replace with your email username
+    password: sunset-password  # Replace with your email password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+
 server:
   port: 8080
 
