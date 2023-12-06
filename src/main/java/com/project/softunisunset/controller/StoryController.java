@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -46,6 +47,7 @@ public class StoryController {
     @PostMapping("/blog")
     public String storiesAdd(@Valid CreateStoryDTO createStoryDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
 
+        createStoryDTO.setDate(LocalDate.now());
         if(bindingResult.hasErrors()||!this.storyService.createStory(createStoryDTO)){
             redirectAttributes.addFlashAttribute("createStoryDTO", createStoryDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.createStoryDTO", bindingResult);
