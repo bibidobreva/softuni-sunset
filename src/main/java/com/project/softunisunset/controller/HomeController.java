@@ -23,7 +23,7 @@ public class HomeController {
     @GetMapping("/")
     public String loggedOutIndex(){
 
-        //TODO
+
 
         return "index";
     }

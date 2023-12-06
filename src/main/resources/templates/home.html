@@ -19,7 +19,7 @@ xmlns:th="http://www.thymeleaf.org">
                     <span th:text="${post.getLocation()}">LOCATION</span>
                 </div>
                 <div class="photo">
-                    <img th:src="'data:image/png;base64,' + ${post.getBase64Photo()}" alt="Sunset Photo">
+                    <img th:src="'data:/image/png;base64,' + ${post.getBase64Photo()}" alt="Sunset Photo">
                 </div>
 
 
