@@ -20,7 +20,7 @@ public class SpringSecurityConfiguration {
         httpSecurity.authorizeHttpRequests(
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/", "/login", "/register","/events","/contacts","/about").permitAll()
+                        .requestMatchers("/", "/login", "/register","/events","/contacts","/about", "errors").permitAll()
                         .requestMatchers("/events/add").hasRole(UserRolesEnums.ADMIN.name())
                         .anyRequest().authenticated()
         ).formLogin(
@@ -29,7 +29,7 @@ public class SpringSecurityConfiguration {
                             .usernameParameter("username")
                             .passwordParameter("password")
                             .defaultSuccessUrl("/home")
-                            .failureForwardUrl("/login?error");
+                            .failureForwardUrl("/errors");
                 }
         ).logout(
                 logout->{

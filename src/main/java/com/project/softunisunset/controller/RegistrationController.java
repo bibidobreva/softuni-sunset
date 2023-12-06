@@ -25,19 +25,14 @@ public class RegistrationController {
         this.userService = authService;
     }
 
-    @ModelAttribute("userRegistrationDTO")
+    @ModelAttribute("registrationDTO")
     public UserRegistrationDTO initRegistrationDTO(){
         return  new UserRegistrationDTO();
     }
 
     @GetMapping("/register")
     public String register() {
-//        long loggedUserId = loggedUser.getId();
-
-//        //TODO do i need that
-//        if(loggedUserId!=0){
-//            return "redirect:/home";
-//        }
+//
         return "register";
     }
 
@@ -52,19 +47,11 @@ public class RegistrationController {
             return "redirect:/register";
         }
 
-//        long loggedUserId = loggedUser.getId();
-//        if(loggedUserId!=0){
-//            return "redirect:/home";
-//        }
+
 
         return "redirect:login";
     }
 
 
-//    @GetMapping("/logout")
-//    public String logout(){
-//        this.authService.logout();
-//
-//        return "redirect:/";
-//    }
+
 }

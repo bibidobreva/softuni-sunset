@@ -7,16 +7,17 @@ import com.project.softunisunset.repositories.SunsetRepository;
 import com.project.softunisunset.service.SunsetService;
 import com.project.softunisunset.session.LoggedUser;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Base64;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class SunsetController {
@@ -55,21 +56,29 @@ public class SunsetController {
     }
 
 
-    @GetMapping("/sunset/continent/{continentName}")
-    public String showSunsetsByContinent(@PathVariable String continentName, Model model) {
+
+
+
+    @GetMapping("/api/photos")
+    @ResponseBody
+    public ResponseEntity<List<String>> getPhotosByContinent(@RequestParam String continent) {
         try {
-            ContinentName continent = ContinentName.valueOf(continentName.toUpperCase());
-            List<Sunset> sunsets = sunsetService.getAllSunsetsByContinent(continent);
+            ContinentName continentName = ContinentName.valueOf(continent.toUpperCase());
+            List<Sunset> sunsets = sunsetService.getAllSunsetsByContinent(continentName);
 
-            model.addAttribute("sunsets", sunsets);
-            model.addAttribute("continentName", continentName);
+            // Convert byte[] to Base64-encoded strings
+            List<String> photoUrls = sunsets.stream()
+                    .map(sunset -> "data:image/png;base64," + Base64.getEncoder().encodeToString(sunset.getPhoto()))
+                    .collect(Collectors.toList());
 
-            return "continent";
+            return ResponseEntity.ok(photoUrls);
         } catch (IllegalArgumentException e) {
-
-            return "redirect:/error";
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
+
+
+
 
     @GetMapping("/sunset/continent")
     public String continents(){

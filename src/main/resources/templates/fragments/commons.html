@@ -25,7 +25,13 @@
                 <li><a href="/register" sec:authorize="!isAuthenticated()">Register</a></li>
                 <li><a href="/events" sec:authorize="isAuthenticated()">Events</a></li>
                 <li><a href="/profile" sec:authorize="isAuthenticated()">Profile</a></li>
-                <li><a href="/logout" sec:authorize="isAuthenticated()">Logout</a></li>
+                <li sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" method="post">
+                        <input type="submit" value="Logout"/>
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    </form>
+                </li>
+
 
             </ul>
         </nav>
