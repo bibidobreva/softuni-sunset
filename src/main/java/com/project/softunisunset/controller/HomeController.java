@@ -11,12 +11,12 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-    private LoggedUser loggedUser;
+
     private SunsetService sunsetService;
 
 
-    public HomeController(LoggedUser loggedUser, SunsetService sunsetService) {
-        this.loggedUser = loggedUser;
+    public HomeController( SunsetService sunsetService) {
+
         this.sunsetService = sunsetService;
     }
 

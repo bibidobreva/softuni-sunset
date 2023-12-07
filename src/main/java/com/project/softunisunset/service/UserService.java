@@ -9,6 +9,7 @@ import com.project.softunisunset.repositories.SunsetRepository;
 import com.project.softunisunset.repositories.UserRepository;
 import com.project.softunisunset.repositories.UserRoleRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -80,5 +81,15 @@ public class UserService {
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+
+    public User getCurrentUser(){
+        String loggedInUsername = SecurityContextHolder.getContext().getAuthentication().getName();
+        Optional<User> currentUser = this.userRepository.findByUsername(loggedInUsername);
+        if(currentUser.isEmpty()){
+            throw new RuntimeException();
+        }
+        return currentUser.get();
     }
 }

@@ -25,13 +25,13 @@ public class User extends BaseEntity {
 
 
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
     private List<Sunset> sunsets;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Sunset> likedSunsets;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Story> stories;
 
 

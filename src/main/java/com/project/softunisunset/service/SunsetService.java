@@ -32,7 +32,7 @@ public class SunsetService {
 
     }
 
-    public boolean createSunset(CreateSunsetDTO createSunsetDTO){
+    public boolean createSunset(CreateSunsetDTO createSunsetDTO) {
 
         ContinentName continentName = ContinentName.valueOf(createSunsetDTO.getContinent());
 
@@ -42,8 +42,7 @@ public class SunsetService {
         Optional<Continent> continent = this.continentRepository.findByName(continentName);
 
 
-
-        if(continent.isEmpty()|| optionalUser.isEmpty()){
+        if (continent.isEmpty() || optionalUser.isEmpty()) {
             return false;
         }
 
@@ -56,10 +55,8 @@ public class SunsetService {
         this.sunsetRepository.save(sunset);
 
 
-
         return true;
     }
-
 
 
     public List<Sunset> getAllSunsetsByContinent(ContinentName continentName) {
@@ -74,7 +71,11 @@ public class SunsetService {
     }
 
 
-    public List<Sunset> getAllSunsets(){
+    public List<Sunset> getAllSunsets() {
         return this.sunsetRepository.findAll();
+    }
+
+    public List<Sunset> getAllSunsetsByUser(User user) {
+        return this.sunsetRepository.findAllByUser(user);
     }
 }

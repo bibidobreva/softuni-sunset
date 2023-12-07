@@ -18,15 +18,15 @@ xmlns:th="http://www.thymeleaf.org">
     
     <section>
         
-        <h1>PERSONS PROFILE</h1>
+        <h1 th:text="'Profile of ' + ${user.getUsername()}">PERSONS PROFILE</h1>
 
-        <p><a href="#">Liked Sunsets</a></p>
+        <p><a href="/likes" >Liked Sunsets</a></p>
         <div class="user-info">
-            <p>Info</p>
+
             <div>
                 
-                <p>POSTS</p>
-                <p>BIRTHDATE</p>
+                <p th:text = "'Number of sunsets: '+${user.getSunsets().size()}">number of posts</p>
+                <p th:text ="'Name: '+${user.getFirstName()}+ ' '+${user.getLastName()}">first name+last name</p>
 
             </div>
 
@@ -38,13 +38,13 @@ xmlns:th="http://www.thymeleaf.org">
 
         <h3>Posts</h3>
         <div class="feed">
-            <div class="users-post">
+            <div class="users-post" th:each="post:${feedSunsets}">
                 <div class="info">
-                    <span>NAME</span>
-                    <span>LOCATION</span>
+                    <span th:text="${post.getUser().getUsername()}">NAME</span>
+                    <span th:text="${post.getLocation()}">LOCATION</span>
                 </div>
                 <div class="photo">
-                    <img src="" alt="IMAGE">
+                    <img th:src="'data:/image/png;base64,' + ${post.getBase64Photo()}" alt="IMAGE">
                 </div>
             </div>
         </div>
