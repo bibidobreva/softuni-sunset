@@ -17,11 +17,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class RegistrationController {
 
 
-    private LoggedUser loggedUser;
+
     private UserService userService;
 
-    public RegistrationController(LoggedUser loggedUser, UserService authService) {
-        this.loggedUser = loggedUser;
+    public RegistrationController( UserService authService) {
+
         this.userService = authService;
     }
 

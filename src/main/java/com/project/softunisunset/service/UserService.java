@@ -7,6 +7,7 @@ import com.project.softunisunset.models.enums.UserRolesEnums;
 import com.project.softunisunset.repositories.StoryRepository;
 import com.project.softunisunset.repositories.SunsetRepository;
 import com.project.softunisunset.repositories.UserRepository;
+import com.project.softunisunset.repositories.UserRoleRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,12 +24,15 @@ public class UserService {
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, SunsetRepository sunsetRepository, StoryRepository storyRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
+    private final UserRoleRepository userRoleRepository;
+
+    public UserService(UserRepository userRepository, SunsetRepository sunsetRepository, StoryRepository storyRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, UserRoleRepository userRoleRepository) {
         this.userRepository = userRepository;
         this.sunsetRepository = sunsetRepository;
         this.storyRepository = storyRepository;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
+        this.userRoleRepository = userRoleRepository;
     }
 
 
@@ -44,17 +48,22 @@ public class UserService {
             return false;
         }
 
-        UserRoleEntity userRoleEntity = new UserRoleEntity();
+        UserRolesEnums userRolesEnums = null;
+
         if (userRepository.count() == 0) {
 
-            userRoleEntity.setRole(UserRolesEnums.ADMIN);
+            userRolesEnums = UserRolesEnums.ADMIN;
+
+
         } else {
-            userRoleEntity.setRole(UserRolesEnums.USER);
+            userRolesEnums = UserRolesEnums.USER;
         }
 
 
+        Optional<UserRoleEntity> role = userRoleRepository.findByRole(userRolesEnums);
+
         List<UserRoleEntity> roles = new ArrayList<>();
-        roles.add(userRoleEntity);
+        roles.add(role.get());
 
 
 
