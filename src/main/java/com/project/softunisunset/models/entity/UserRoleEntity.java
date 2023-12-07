@@ -7,7 +7,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "user_role")
+@Table(name = "roles")
 public class UserRoleEntity extends BaseEntity{
 
     @Enumerated(EnumType.STRING)

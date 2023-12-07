@@ -56,12 +56,15 @@ public class UserService {
         List<UserRoleEntity> roles = new ArrayList<>();
         roles.add(userRoleEntity);
 
-        registrationDTO.setRoles(roles);
+
 
         registrationDTO.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
 
 
-        this.userRepository.save(this.modelMapper.map(registrationDTO, User.class));
+        User user = this.modelMapper.map(registrationDTO, User.class);
+        user.setRoles(roles);
+
+        this.userRepository.save(user);
         return true;
     }
 
