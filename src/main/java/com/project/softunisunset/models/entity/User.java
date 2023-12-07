@@ -28,7 +28,7 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
     private List<Sunset> sunsets;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER , cascade = CascadeType.PERSIST)
     private List<Sunset> likedSunsets;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)

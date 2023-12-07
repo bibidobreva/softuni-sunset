@@ -2,15 +2,16 @@ package com.project.softunisunset.controller;
 
 import com.project.softunisunset.models.dto.CreateSunsetDTO;
 import com.project.softunisunset.models.entity.Sunset;
+import com.project.softunisunset.models.entity.User;
 import com.project.softunisunset.models.enums.ContinentName;
 import com.project.softunisunset.repositories.SunsetRepository;
 import com.project.softunisunset.service.SunsetService;
+import com.project.softunisunset.service.UserService;
 import com.project.softunisunset.session.LoggedUser;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -21,12 +22,12 @@ import java.util.stream.Collectors;
 
 @Controller
 public class SunsetController {
-    private LoggedUser loggedUser;
+    private UserService userService;
     private final SunsetRepository sunsetRepository;
     private SunsetService sunsetService;
 
-    public SunsetController(LoggedUser loggedUser, SunsetRepository sunsetRepository, SunsetService sunsetService) {
-        this.loggedUser = loggedUser;
+    public SunsetController( UserService userService, SunsetRepository sunsetRepository, SunsetService sunsetService) {
+        this.userService = userService;
         this.sunsetRepository = sunsetRepository;
         this.sunsetService = sunsetService;
     }
@@ -83,5 +84,16 @@ public class SunsetController {
     @GetMapping("/sunset/continent")
     public String continents(){
         return "continent";
+    }
+
+
+
+
+    @GetMapping({"/likeSunset/{sunsetId}"})
+    public String likeSunset(@PathVariable Long sunsetId) {
+        User user = this.userService.getCurrentUser();
+        this.userService.likeSunset(user, sunsetId);
+
+        return "redirect:/home";
     }
 }

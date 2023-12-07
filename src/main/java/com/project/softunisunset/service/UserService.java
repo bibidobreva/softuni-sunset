@@ -1,6 +1,7 @@
 package com.project.softunisunset.service;
 
 import com.project.softunisunset.models.dto.UserRegistrationDTO;
+import com.project.softunisunset.models.entity.Sunset;
 import com.project.softunisunset.models.entity.User;
 import com.project.softunisunset.models.entity.UserRoleEntity;
 import com.project.softunisunset.models.enums.UserRolesEnums;
@@ -91,5 +92,14 @@ public class UserService {
             throw new RuntimeException();
         }
         return currentUser.get();
+    }
+
+    public void likeSunset(User user, Long sunsetId) {
+        Optional<Sunset> sunset = this.sunsetRepository.findById(sunsetId);
+        if(sunset.isEmpty()){
+            throw new RuntimeException();
+        }
+        user.getLikedSunsets().add(sunset.get());
+        userRepository.save(user);
     }
 }

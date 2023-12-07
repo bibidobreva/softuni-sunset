@@ -24,7 +24,10 @@ xmlns:th="http://www.thymeleaf.org">
                 </div>
 
 
-                <button>Like!</button>
+                <a th:href="@{'/likeSunset/' + ${post.getId()}}">
+                    <button>Like!</button>
+                </a>
+
             </div>
         </div>
 
