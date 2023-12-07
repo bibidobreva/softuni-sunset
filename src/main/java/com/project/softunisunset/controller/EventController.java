@@ -1,14 +1,18 @@
 package com.project.softunisunset.controller;
 
 import com.project.softunisunset.models.dto.CreateEventDTO;
+import com.project.softunisunset.models.entity.Event;
 import com.project.softunisunset.service.EventService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 public class EventController {
@@ -25,7 +29,7 @@ public class EventController {
     }
     @GetMapping("/events/add")
     public String eventsAdd(){
-        return "events/add";
+        return "add-event";
     }
 
 
@@ -42,7 +46,7 @@ public class EventController {
 
 
 
-        return "redirect:events";
+        return "redirect:/events";
     }
 
 
@@ -50,7 +54,10 @@ public class EventController {
 
 
     @GetMapping("/events")
-    public String events(){
+    public String events(Model model){
+
+        List<Event> eventList =eventService.getAllEvents();
+        model.addAttribute("eventList",eventList);
         return "events";
     }
 }

@@ -17,9 +17,10 @@ xmlns:th="http://www.thymeleaf.org">
             <div id="border">
                 <h3 class="h-custom">Events</h3>
     
-                <div id="content">
-                    <span>NAME</span>
-                    <p>Event description .....</p>
+                <div id="content" th:each = "event:${eventList}">
+                    <span th:text="${event.getName()}">NAME</span>
+                    <p th:text="${event.getDescription()}">Event description .....</p>
+                    <span th:text="${event.getDate()}">Date</span>
                 </div>
             </div>
         </section>

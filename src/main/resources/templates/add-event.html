@@ -16,14 +16,19 @@ xmlns:th="http://www.thymeleaf.org">
 
 <main>
    <div id="border">
-    <form>
+    <form
+            th:method="POST"
+            th:action="@{/events/add}"
+            th:object="${createEventDTO}">
       <h3 class="h-custom">Add event</h3>
         <div class="field">
 
          <div>
             <Label for="name">Name of event:</Label>
          </div>
-         <input class="form-control" type="text" placeholder="Name">
+         <input class="form-control" type="text" placeholder="Name" id="name"
+                th:field = "*{name}"
+                th:errorclass="is-invalid">
          <small class="text-danger invalid-feedback">Error message name</small>  
          </div>
 
@@ -32,7 +37,9 @@ xmlns:th="http://www.thymeleaf.org">
             <div>
                <label for="description">Description:</label>
             </div>
-            <textarea name="text" id="description" cols="30" rows="10" class="form-control"></textarea>
+            <textarea name="text" id="description" cols="30" rows="10" class="form-control"
+                      th:field = "*{description}"
+                      th:errorclass="is-invalid"></textarea>
             <small class="text-danger invalid-feedback">Error message desc</small>  
          </div>
 
@@ -41,7 +48,9 @@ xmlns:th="http://www.thymeleaf.org">
             <div>
                <Label for="date">Date:</Label>
             </div>
-            <input class="form-control" type="date" >
+            <input class="form-control" type="date" id="date"
+                   th:field = "*{date}"
+                   th:errorclass="is-invalid">
             <small class="text-danger invalid-feedback">Error message date</small>  
          </div>
 
