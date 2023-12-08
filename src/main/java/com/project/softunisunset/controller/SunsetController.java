@@ -2,12 +2,10 @@ package com.project.softunisunset.controller;
 
 import com.project.softunisunset.models.dto.CreateSunsetDTO;
 import com.project.softunisunset.models.entity.Sunset;
-import com.project.softunisunset.models.entity.User;
 import com.project.softunisunset.models.enums.ContinentName;
 import com.project.softunisunset.repositories.SunsetRepository;
 import com.project.softunisunset.service.SunsetService;
 import com.project.softunisunset.service.UserService;
-import com.project.softunisunset.session.LoggedUser;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

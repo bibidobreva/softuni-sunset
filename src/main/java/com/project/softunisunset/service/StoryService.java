@@ -5,7 +5,6 @@ import com.project.softunisunset.models.entity.Story;
 import com.project.softunisunset.models.entity.User;
 import com.project.softunisunset.repositories.StoryRepository;
 import com.project.softunisunset.repositories.UserRepository;
-import com.project.softunisunset.session.LoggedUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;

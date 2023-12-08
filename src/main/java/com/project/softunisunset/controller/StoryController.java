@@ -4,7 +4,6 @@ import com.project.softunisunset.models.dto.CreateStoryDTO;
 import com.project.softunisunset.models.entity.Story;
 import com.project.softunisunset.repositories.StoryRepository;
 import com.project.softunisunset.service.StoryService;
-import com.project.softunisunset.session.LoggedUser;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,12 +18,12 @@ import java.util.List;
 
 @Controller
 public class StoryController {
-    private LoggedUser loggedUser;
+
     private StoryService storyService;
     private StoryRepository storyRepository;
 
-    public StoryController(LoggedUser loggedUser, StoryService storyService, StoryRepository storyRepository) {
-        this.loggedUser = loggedUser;
+    public StoryController( StoryService storyService, StoryRepository storyRepository) {
+
         this.storyService = storyService;
         this.storyRepository = storyRepository;
     }

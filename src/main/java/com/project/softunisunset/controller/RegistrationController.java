@@ -2,7 +2,6 @@ package com.project.softunisunset.controller;
 
 import com.project.softunisunset.models.dto.UserRegistrationDTO;
 import com.project.softunisunset.service.UserService;
-import com.project.softunisunset.session.LoggedUser;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
