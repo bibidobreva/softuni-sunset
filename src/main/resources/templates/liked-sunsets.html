@@ -12,9 +12,12 @@ xmlns:th="http://www.thymeleaf.org">
     <main>
          <h1>Your liked photos!</h1>
         <section>
-            <div>
-                <img src="image/africa.jpg" alt="">
-                <button>Remove</button>
+            <div th:each="sunset:${sunsets}">
+                <img th:src="'data:/image/png;base64,' + ${post.getBase64Photo()}" alt="Sunset Photo">
+
+                <a th:href="@{'/likeSunset/' + ${sunset.getId()}}">
+                    <button>Like!</button>
+                </a>
              </div>
         </section>
     </main>

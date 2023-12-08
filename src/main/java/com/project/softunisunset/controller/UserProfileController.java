@@ -32,4 +32,16 @@ public class UserProfileController {
         model.addAttribute("feedSunsets",sunsets);
         return "profile";
     }
+
+    @GetMapping("/profile/likes")
+    public String likes(Model model){
+        User user = this.userService.getCurrentUser();
+        List<Sunset> sunsets = this.userService.getAllLikedSunsetsOfUser(user);
+        model.addAttribute("sunsets", sunsets);
+
+
+        return "liked-sunsets";
+    }
+
+    
 }

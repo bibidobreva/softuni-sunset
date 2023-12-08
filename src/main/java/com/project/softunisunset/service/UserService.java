@@ -102,4 +102,8 @@ public class UserService {
         user.getLikedSunsets().add(sunset.get());
         userRepository.save(user);
     }
+
+    public List<Sunset> getAllLikedSunsetsOfUser(User user) {
+        return user.getLikedSunsets();
+    }
 }
