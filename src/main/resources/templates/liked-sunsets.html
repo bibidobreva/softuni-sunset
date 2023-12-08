@@ -16,7 +16,7 @@ xmlns:th="http://www.thymeleaf.org">
                 <img th:src="'data:/image/png;base64,' + ${post.getBase64Photo()}" alt="Sunset Photo">
 
                 <a th:href="@{'/likeSunset/' + ${sunset.getId()}}">
-                    <button>Like!</button>
+                    <button>Remove</button>
                 </a>
              </div>
         </section>

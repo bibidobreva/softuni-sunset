@@ -43,5 +43,5 @@ public class UserProfileController {
         return "liked-sunsets";
     }
 
-    
+
 }
