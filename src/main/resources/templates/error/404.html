@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>404</title>
+</head>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+
+<div class="container-fluid">
+    <h5 class="text-center  mt-5">Upps, the thing you are looking for is no longer here!</h5>
+    <h5 class="text-center  mt-5">We are very sorry.</h5>
+    <img th:src="@{/images/sunset.png}" alt="Sunset image">
+    <br/>
+    <a th:href="@{/}">Go home...</a>
+</div>
+
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>

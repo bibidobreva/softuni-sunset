@@ -89,11 +89,5 @@ public class SunsetController {
 
 
 
-    @GetMapping({"/likeSunset/{sunsetId}"})
-    public String likeSunset(@PathVariable Long sunsetId) {
-        User user = this.userService.getCurrentUser();
-        this.userService.likeSunset(user, sunsetId);
 
-        return "redirect:/home";
-    }
 }
