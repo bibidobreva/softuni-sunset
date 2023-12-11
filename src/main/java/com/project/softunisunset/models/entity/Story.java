@@ -1,16 +1,25 @@
 package com.project.softunisunset.models.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "stories")
 public class Story extends BaseEntity{
+
+    @Size(min = 2, max = 20)
     private String name;
+
+    @Column(columnDefinition = "text")
     private String story;
+
+    @PastOrPresent
     private LocalDate date;
 
     @ManyToOne

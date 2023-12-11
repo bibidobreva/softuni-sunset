@@ -16,7 +16,7 @@ public class CreateStoryDTO {
     private String name;
 
     @NotNull
-    @Size(min = 2, max = 80)
+    @Size(min = 2, max = 500)
     private String story;
 
     @PastOrPresent
