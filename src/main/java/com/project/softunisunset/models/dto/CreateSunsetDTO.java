@@ -1,16 +1,19 @@
 package com.project.softunisunset.models.dto;
 
 import com.project.softunisunset.models.entity.User;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 
 public class CreateSunsetDTO {
     private String location;
     private LocalDate date;
-    private byte[] photo;
+
     private String continent;
 
     private User user;
+
+    private MultipartFile photo;
 
     public CreateSunsetDTO(){}
     public String getLocation() {
@@ -29,13 +32,6 @@ public class CreateSunsetDTO {
         this.date = date;
     }
 
-    public byte[] getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
-    }
 
     public String getContinent() {
         return continent;
@@ -51,5 +47,13 @@ public class CreateSunsetDTO {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public MultipartFile getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(MultipartFile photo) {
+        this.photo = photo;
     }
 }

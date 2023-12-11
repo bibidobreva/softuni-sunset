@@ -21,7 +21,8 @@ xmlns:th="http://www.thymeleaf.org">
             <form
                     th:method="POST"
                     th:action="@{/sunset/add}"
-                    th:object="${createSunsetDTO}">
+                    th:object="${createSunsetDTO}"
+                    enctype="multipart/form-data">
                 <h3 class="h-custom">Add a sunset photo</h3>
                 <div class="field">
 
@@ -67,10 +68,10 @@ xmlns:th="http://www.thymeleaf.org">
                     <div>
                         <label for="photo">Choose a Photo:</label>
                     </div>
-                    <input class="form-control" type="file" name="file" id="photo" accept="image/*" required
-                           th:field = "*{photo}"
-                           th:errorclass="is-invalid alert-danger">
-                    <small class="text-danger invalid-feedback">Error message file</small>
+                     <input class="form-control" type="file" name="photo" id="photo" accept="image/*" required th:errorclass="is-invalid">
+
+
+                     <small class="text-danger invalid-feedback">Error message file</small>
                 </div>
 
                 <input type="hidden" th:field="*{user.username}" th:value="${#authentication.name}">

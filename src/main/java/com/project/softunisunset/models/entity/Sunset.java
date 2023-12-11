@@ -18,6 +18,7 @@ public class Sunset extends BaseEntity{
     private LocalDate date;
 
     @Lob
+    @Column(columnDefinition = "BLOB")
     private byte[] photo;
 
     @NotNull

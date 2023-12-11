@@ -11,7 +11,9 @@ import com.project.softunisunset.repositories.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +34,7 @@ public class SunsetService {
 
     }
 
-    public boolean createSunset(CreateSunsetDTO createSunsetDTO) {
+    public boolean createSunset(CreateSunsetDTO createSunsetDTO, MultipartFile file) {
 
         ContinentName continentName = ContinentName.valueOf(createSunsetDTO.getContinent());
 
@@ -51,6 +53,14 @@ public class SunsetService {
 
         sunset.setUser(optionalUser.get());
         sunset.setContinent(continent.get());
+
+        try {
+            sunset.setPhoto(file.getBytes()); // Save the image data as a byte array
+        } catch (IOException e) {
+            // Handle the exception (e.g., log an error)
+            return false;
+        }
+
 
         this.sunsetRepository.save(sunset);
 

@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Base64;
@@ -44,8 +45,10 @@ public class SunsetController {
     }
 
     @PostMapping("/sunset/add")
-    public String sunsets(@Valid CreateSunsetDTO createSunsetDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes){
-        if(bindingResult.hasErrors()||!this.sunsetService.createSunset(createSunsetDTO)){
+    public String sunsets(@RequestParam("photo") MultipartFile photo, @Valid CreateSunsetDTO createSunsetDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+        System.out.println("Received file: " + photo.getOriginalFilename());
+        if(bindingResult.hasErrors()||!this.sunsetService.createSunset(createSunsetDTO, photo)){
+            bindingResult.getAllErrors().forEach(error -> System.out.println(error.getDefaultMessage()));
             redirectAttributes.addFlashAttribute("createSunsetDTO", createSunsetDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.createSunsetDTO", bindingResult);
 
