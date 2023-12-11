@@ -39,7 +39,7 @@ public class SunsetController {
 
     @GetMapping("/sunset/add")
     public String sunsets(){
-        //TODO
+
 
         return "add-sunset";
     }
@@ -48,7 +48,6 @@ public class SunsetController {
     public String sunsets(@RequestParam("photo") MultipartFile photo, @Valid CreateSunsetDTO createSunsetDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes){
         System.out.println("Received file: " + photo.getOriginalFilename());
         if(bindingResult.hasErrors()||!this.sunsetService.createSunset(createSunsetDTO, photo)){
-            bindingResult.getAllErrors().forEach(error -> System.out.println(error.getDefaultMessage()));
             redirectAttributes.addFlashAttribute("createSunsetDTO", createSunsetDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.createSunsetDTO", bindingResult);
 

@@ -4,6 +4,9 @@ xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/header-footer.css">
     <title>Liked Sunsets</title>
 </head>
 <body>
@@ -12,13 +15,17 @@ xmlns:th="http://www.thymeleaf.org">
     <main>
          <h1>Your liked photos!</h1>
         <section>
-            <div th:each="sunset:${sunsets}">
-                <img th:src="'data:/image/png;base64,' + ${post.getBase64Photo()}" alt="Sunset Photo">
+            <div class="users-post">
+                <div class="users-post" th:each="sunset:${sunsets}">
+                    <span th:text="${sunset.getUser().getUsername()}">NAME</span>
+                    <img th:src="'data:/image/png;base64,' + ${sunset.getBase64Photo()}" alt="Sunset Photo">
+    
+                    <a th:href="@{'/likeSunset/' + ${sunset.getId()}}">
+                        <button>Remove</button>
+                    </a>
+                 </div>
 
-                <a th:href="@{'/likeSunset/' + ${sunset.getId()}}">
-                    <button>Remove</button>
-                </a>
-             </div>
+            </div>
         </section>
     </main>
 

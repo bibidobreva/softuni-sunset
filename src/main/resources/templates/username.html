@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/header-footer.css">
     <title>ChangeUsername</title>
 </head>
 <body>
 
+<header th:replace="~{fragments/commons::nav}">
+
+</header>
+
+   <main>
+       <div id="border">
+           <form
+                   th:method="POST"
+                   th:action="@{/username}"
+                   th:object="${changeUsernameDTO}">
+               <div class="field">
+                   <div>
+                       <Label for="username">New username:</Label>
+                   </div>
+
+                   <input class="form-control" type="text" placeholder="Username" name="username" id="username"
+                          th:field = "*{username}"
+                          th:errorclass="is-invalid">
+                   <small class="text-danger invalid-feedback">Username must be between 3 and 20 characters</small>
+               </div>
+               <div class="button">
+                   <button class="button-custom">Change Username</button>
+               </div>
+           </form>
+       </div>
+   </main>
+
+
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
 </body>
 </html>

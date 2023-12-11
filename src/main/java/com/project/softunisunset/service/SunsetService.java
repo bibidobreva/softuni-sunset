@@ -55,9 +55,9 @@ public class SunsetService {
         sunset.setContinent(continent.get());
 
         try {
-            sunset.setPhoto(file.getBytes()); // Save the image data as a byte array
+            sunset.setPhoto(file.getBytes());
         } catch (IOException e) {
-            // Handle the exception (e.g., log an error)
+
             return false;
         }
 

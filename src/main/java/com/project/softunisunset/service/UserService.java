@@ -1,5 +1,6 @@
 package com.project.softunisunset.service;
 
+import com.project.softunisunset.models.dto.ChangeUsernameDTO;
 import com.project.softunisunset.models.dto.UserRegistrationDTO;
 import com.project.softunisunset.models.entity.Sunset;
 import com.project.softunisunset.models.entity.User;
@@ -105,5 +106,20 @@ public class UserService {
 
     public List<Sunset> getAllLikedSunsetsOfUser(User user) {
         return user.getLikedSunsets();
+    }
+
+    public boolean changeUsername(ChangeUsernameDTO changeUsernameDTO, User user) {
+
+        Optional<User> matchingUser = userRepository.findByUsername(changeUsernameDTO.getUsername());
+
+        if(matchingUser.isPresent()){
+            return false;
+        }
+
+        user.setUsername(changeUsernameDTO.getUsername());
+        this.userRepository.save(user);
+
+
+        return true;
     }
 }
