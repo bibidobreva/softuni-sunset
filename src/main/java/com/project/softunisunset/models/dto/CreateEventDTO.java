@@ -1,13 +1,20 @@
 package com.project.softunisunset.models.dto;
 
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 
 public class CreateEventDTO {
+    @Size(min = 2, max = 20)
     private String name;
+    @Size(min = 2, max = 200)
     private String description;
+    @Future
     private LocalDate date;
 
-    public CreateEventDTO(){}
+    public CreateEventDTO() {
+    }
 
     public String getName() {
         return name;

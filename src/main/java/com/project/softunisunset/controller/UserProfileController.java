@@ -71,7 +71,7 @@ public class UserProfileController {
 
 
 
-         
+
             return "redirect:/username";
         }
 

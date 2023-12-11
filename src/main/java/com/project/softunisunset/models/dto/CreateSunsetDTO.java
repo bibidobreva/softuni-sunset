@@ -1,14 +1,22 @@
 package com.project.softunisunset.models.dto;
 
 import com.project.softunisunset.models.entity.User;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Size;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 
 public class CreateSunsetDTO {
+    @Size(min = 2, max = 20)
+    @NotBlank
     private String location;
+    @PastOrPresent
     private LocalDate date;
 
+    @NotNull
     private String continent;
 
     private User user;

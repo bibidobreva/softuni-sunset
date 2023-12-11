@@ -2,6 +2,7 @@ package com.project.softunisunset.models.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
@@ -17,6 +18,7 @@ public class Sunset extends BaseEntity{
     private String location;
 
     @Column(nullable = false)
+    @PastOrPresent
     private LocalDate date;
 
     @Lob
