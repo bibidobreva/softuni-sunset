@@ -29,7 +29,7 @@ xmlns:th="http://www.thymeleaf.org">
                 </div>
                 <input type="text" class="form-control" id="name" placeholder="Story name"
                 th:field = "*{name}"
-                th:errorclass = "is-invalid alert-danger">
+                th:errorclass = "is-invalid">
                 <small class="text-danger invalid-feedback">Error message name</small>
             </div>
 
@@ -41,7 +41,7 @@ xmlns:th="http://www.thymeleaf.org">
                 </div>
                 <textarea class="form-control" name="text" id="story" cols="30" rows="10" placeholder="Write your story here..."
                           th:field = "*{story}"
-                          th:errorclass = "is-invalid alert-danger"></textarea>
+                          th:errorclass = "is-invalid"></textarea>
                 <small class="text-danger invalid-feedback">Error message story</small>
             </div>
 

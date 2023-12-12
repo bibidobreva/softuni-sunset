@@ -21,7 +21,7 @@ public class SpringSecurityConfiguration {
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers("/", "/login", "/register","/events","/contacts","/about", "/errors").permitAll()
-                        .requestMatchers("/events/add").hasRole(UserRolesEnums.ADMIN.name())
+                        .requestMatchers("/events/add","/changeUserRole").hasRole(UserRolesEnums.ADMIN.name())
                         .anyRequest().authenticated()
         ).formLogin(
                 formLogin -> {

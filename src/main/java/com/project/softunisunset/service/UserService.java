@@ -122,4 +122,16 @@ public class UserService {
 
         return true;
     }
+
+
+    public void changeUserRole(String username, String newRole) {
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
+
+        UserRoleEntity role = userRoleRepository.findByRole(UserRolesEnums.valueOf(newRole))
+                .orElseThrow(() -> new RuntimeException("Role not found"));
+
+        user.getRoles().clear();
+        user.getRoles().add(role);
+        userRepository.save(user);
+    }
 }

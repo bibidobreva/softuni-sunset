@@ -41,7 +41,7 @@ xmlns:th="http://www.thymeleaf.org">
                     </div>
                     <input class="form-control" type="date" id="date"
                            th:field = "*{date}"
-                           th:errorclass="is-invalid alert-danger">
+                           th:errorclass="is-invalid">
                     <small class="text-danger invalid-feedback">Error message date</small>
                  </div>
         
@@ -51,7 +51,7 @@ xmlns:th="http://www.thymeleaf.org">
                     </div>
                     <select class="form-control" id="continent"
                             th:field = "*{continent}"
-                            th:errorclass="is-invalid alert-danger">
+                            th:errorclass="is-invalid">
                         <option value="">Select Continent</option>
                         <option value="AFRICA">Africa</option>
                         <option value="ANTARCTICA">Antarctica</option>

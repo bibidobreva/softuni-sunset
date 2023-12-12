@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+
+<main>
+    <h2>Change User Role</h2>
+
+    <form action="/changeUserRole" method="post">
+        <label for="username">Select User:</label>
+        <select id="username" name="username" required>
+            <option th:each="user : ${users}" th:text="${user.username}" th:value="${user.username}"></option>
+        </select>
+
+        <br>
+
+        <label for="newRole">Select New Role:</label>
+        <select id="newRole" name="newRole" required>
+            <option value="USER">User</option>
+            <option value="ADMIN">Admin</option>
+        </select>
+
+        <br>
+
+        <button>Change Role</button>
+    </form>
+
+</main>
+</body>
+</html>
