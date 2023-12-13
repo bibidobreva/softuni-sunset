@@ -1,5 +1,6 @@
 package com.project.softunisunset.interceptor;
 
+import com.project.softunisunset.models.enums.UserRolesEnums;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -21,14 +22,28 @@ public class ErrorInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        try {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if (authentication != null && authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
-            // If the user is an admin, let them continue
-            return true;
-        } else {
-            // If the user is not an admin, stop them and show a pop-up message
+
+            if (!request.getRequestURI().equals("/events/add") && !request.getRequestURI().equals("/changeUserRole") &&
+                    (authentication == null || authentication.getAuthorities().stream().noneMatch(a -> a.getAuthority().equals(UserRolesEnums.ADMIN.name())))) {
+
+                return true;
+            } else {
+
+                if (authentication != null && authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals(UserRolesEnums.ADMIN.name()))) {
+                    return true;
+                } else {
+
+                    response.sendError(HttpServletResponse.SC_FORBIDDEN, "Access denied");
+                    return false;
+                }
+            }
+        } catch (Exception e) {
+
             response.sendRedirect("/home?accessDenied=true");
+            e.printStackTrace();
             return false;
         }
     }
@@ -40,12 +55,8 @@ public class ErrorInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
                            ModelAndView modelAndView) {
-        // Post-processing logic, if needed
+        System.out.println("Response Status: " + response.getStatus());
     }
 
-    @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
-                                Exception ex) {
-        // After completion logic, if needed
-    }
+
 }
