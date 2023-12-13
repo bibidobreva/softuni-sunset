@@ -19,36 +19,38 @@ public class ErrorInterceptor implements HandlerInterceptor {
     }
 
 
-    @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
-
+        System.out.println("Request URI: " + request.getRequestURI());
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
 
-            if (!request.getRequestURI().equals("/events/add") && !request.getRequestURI().equals("/changeUserRole") &&
-                    (authentication == null || authentication.getAuthorities().stream().noneMatch(a -> a.getAuthority().equals(UserRolesEnums.ADMIN.name())))) {
-
+            if (!notAllowedPath(request.getRequestURI())) {
                 return true;
             } else {
-
-                if (authentication != null && authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals(UserRolesEnums.ADMIN.name()))) {
+                if (isAdmin(authentication)){
                     return true;
-                } else {
-
-                    response.sendError(HttpServletResponse.SC_FORBIDDEN, "Access denied");
-                    return false;
                 }
+                response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                response.sendRedirect("/events");
+
+                return false;
             }
         } catch (Exception e) {
 
-            response.sendRedirect("/home?accessDenied=true");
             e.printStackTrace();
             return false;
         }
     }
 
+    private boolean isAdmin(Authentication authentication) {
+        return authentication != null && authentication.getAuthorities().stream()
+                .anyMatch(a -> a.getAuthority().equals("ROLE_"+UserRolesEnums.ADMIN.name()));
+    }
 
+    private boolean notAllowedPath(String requestURI) {
+        return "/events/add".equals(requestURI) || "/changeUserRole".equals(requestURI);
+    }
 
 
 

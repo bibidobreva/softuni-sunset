@@ -4,7 +4,6 @@ import com.project.softunisunset.models.entity.User;
 import com.project.softunisunset.service.EmailService;
 import com.project.softunisunset.service.UserService;
 import jakarta.mail.MessagingException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +14,12 @@ public class ScheduledTasks {
 
     private EmailService emailService;
     private UserService userService;
+
+    public ScheduledTasks(EmailService emailService, UserService userService) {
+        this.emailService = emailService;
+        this.userService = userService;
+    }
+
     @Scheduled(cron = "0 0 20 * * ?") // Run every day at 8:00 PM
     public void giveReminder() {
         try {
