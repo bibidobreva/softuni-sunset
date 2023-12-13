@@ -2,17 +2,19 @@
 <html lang="en" xmlns:th="">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/header-footer.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <title>403</title>
 </head>
 <body>
 <header th:replace="~{fragments/commons::nav}"></header>
 
-<div class="container-fluid">
+<div class="container-fluid text-center">
   <h5 class="text-center  mt-5">Upps, you dont have acces to this page!</h5>
   <h5 class="text-center  mt-5">We are very sorry.</h5>
-  <img th:src="@{/images/sunset.png}" alt="Sunset image">
+  <img  th:src="@{/images/sunset.png}" alt="Sunset image">
   <br/>
-  <a th:href="@{/}">Go home...</a>
+  <a  th:href="@{/}">Go home...</a>
 </div>
 
 
