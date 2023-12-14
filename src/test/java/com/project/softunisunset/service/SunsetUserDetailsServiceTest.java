@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,11 +21,12 @@ import static org.mockito.Mockito.when;
 class SunsetUserDetailsServiceTest {
     private SunsetUserDetailsService serviceToTest;
 
-    @Mock
+   // @Mock
     private UserRepository mockUserRepository;
 
     @BeforeEach
     void setUp(){
+        mockUserRepository = Mockito.mock(UserRepository.class);
         serviceToTest = new SunsetUserDetailsService(mockUserRepository);
     }
 

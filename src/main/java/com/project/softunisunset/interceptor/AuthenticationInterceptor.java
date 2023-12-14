@@ -2,6 +2,7 @@ package com.project.softunisunset.interceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -11,13 +12,13 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if (authentication != null && authentication.isAuthenticated() && notAllowedPage(request.getRequestURI())) {
-            // User is logged in and trying to access the login page
-            response.sendRedirect("/home"); // Redirect to home page or any other desired page
-            return false; // Prevent further processing
+        if (!(authentication instanceof AnonymousAuthenticationToken) && notAllowedPage(request.getRequestURI())) {
+
+            response.sendRedirect("/home");
+            return false;
         }
 
-        return true; // Allow the request to proceed
+        return true;
     }
 
     private boolean notAllowedPage(String requestURI) {

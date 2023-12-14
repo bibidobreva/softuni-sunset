@@ -1,5 +1,6 @@
 package com.project.softunisunset.config;
 
+import com.project.softunisunset.interceptor.AuthenticationInterceptor;
 import com.project.softunisunset.interceptor.RoleInterceptor;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
@@ -20,5 +21,6 @@ public class AppConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new RoleInterceptor());
+        registry.addInterceptor(new AuthenticationInterceptor());
     }
 }

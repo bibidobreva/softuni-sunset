@@ -9,7 +9,7 @@
 <main>
     <h2>Change User Role</h2>
 
-    <form action="/changeUserRole" method="post">
+    <form th:action="@{/changeUserRole}" th:method="post">
         <label for="username">Select User:</label>
         <select id="username" name="username" required>
             <option th:each="user : ${users}" th:text="${user.username}" th:value="${user.username}"></option>

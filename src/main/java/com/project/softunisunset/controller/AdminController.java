@@ -20,7 +20,7 @@ public class AdminController {
     }
 
     @GetMapping("/changeUserRole")
-    public String showChangeUserRoleForm(Model model) {
+    public String changeUserRole(Model model) {
         // Retrieve a list of users to populate the dropdown
         model.addAttribute("users", userService.getAllUsers());
         return "admin";
@@ -28,9 +28,7 @@ public class AdminController {
 
     @PostMapping("/changeUserRole")
     public String changeUserRole(@RequestParam String username, @RequestParam String newRole) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println("User Principal: " + authentication.getPrincipal());
-        System.out.println("Authorities: " + authentication.getAuthorities());
+
         userService.changeUserRole(username, newRole);
         return "redirect:/changeUserRole";
     }
