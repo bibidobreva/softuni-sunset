@@ -6,7 +6,6 @@ import com.project.softunisunset.models.entity.Sunset;
 import com.project.softunisunset.models.entity.User;
 import com.project.softunisunset.models.entity.UserRoleEntity;
 import com.project.softunisunset.models.enums.UserRolesEnums;
-import com.project.softunisunset.repositories.StoryRepository;
 import com.project.softunisunset.repositories.SunsetRepository;
 import com.project.softunisunset.repositories.UserRepository;
 import com.project.softunisunset.repositories.UserRoleRepository;
@@ -23,16 +22,16 @@ import java.util.Optional;
 public class UserService {
     private final UserRepository userRepository;
     private final SunsetRepository sunsetRepository;
-    private final StoryRepository storyRepository;
+
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
 
     private final UserRoleRepository userRoleRepository;
 
-    public UserService(UserRepository userRepository, SunsetRepository sunsetRepository, StoryRepository storyRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, UserRoleRepository userRoleRepository) {
+    public UserService(UserRepository userRepository, SunsetRepository sunsetRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, UserRoleRepository userRoleRepository) {
         this.userRepository = userRepository;
         this.sunsetRepository = sunsetRepository;
-        this.storyRepository = storyRepository;
+
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
         this.userRoleRepository = userRoleRepository;
