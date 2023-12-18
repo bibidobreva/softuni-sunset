@@ -14,6 +14,7 @@ public class CreateSunsetDTO {
     @NotBlank
     private String location;
     @PastOrPresent
+    @NotNull
     private LocalDate date;
 
     @NotNull

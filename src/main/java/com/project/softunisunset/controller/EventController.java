@@ -38,7 +38,7 @@ public class EventController {
     public String register(@Valid CreateEventDTO createEventDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()||!this.eventService.createEvent(createEventDTO)) {
-            redirectAttributes.addFlashAttribute("registrationDTO", createEventDTO);
+            redirectAttributes.addFlashAttribute("createEventDTO", createEventDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.createEventDTO", bindingResult);
 
             return "redirect:/events/add";
