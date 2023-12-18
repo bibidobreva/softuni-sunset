@@ -35,7 +35,6 @@ public class StoryController {
 
     @GetMapping("/blog")
     public String stories(Model model){
-        //TODO
 
         List<Story> storyList = this.storyRepository.findAll();
         model.addAttribute("storyList",storyList);

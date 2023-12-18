@@ -21,13 +21,11 @@ import java.util.stream.Collectors;
 
 @Controller
 public class SunsetController {
-    private UserService userService;
-    private final SunsetRepository sunsetRepository;
+
     private SunsetService sunsetService;
 
-    public SunsetController( UserService userService, SunsetRepository sunsetRepository, SunsetService sunsetService) {
-        this.userService = userService;
-        this.sunsetRepository = sunsetRepository;
+    public SunsetController( SunsetService sunsetService) {
+
         this.sunsetService = sunsetService;
     }
 

@@ -29,7 +29,7 @@ public class User extends BaseEntity {
     private List<Sunset> sunsets;
 
     @ManyToMany(fetch = FetchType.EAGER , cascade = CascadeType.PERSIST)
-    private List<Sunset> likedSunsets;
+    private List<Sunset> likedSunsets = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Story> stories;

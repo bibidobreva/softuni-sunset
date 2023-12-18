@@ -34,7 +34,7 @@ public class Sunset extends BaseEntity{
     private Continent continent;
 
 
-    private Sunset(){}
+    public Sunset(){}
 
     public String getLocation() {
         return location;
