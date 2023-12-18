@@ -33,4 +33,16 @@ public class RegistrationControllerTestIT {
         ).andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/register"));
     }
+
+
+
+
+
+
+    @Test
+    void testRegisterPage() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/register"))
+                .andExpect(status().isOk())  // Expect HTTP status 200 (OK)
+                .andExpect(view().name("register"));  // Expect the view name "register"
+    }
 }
