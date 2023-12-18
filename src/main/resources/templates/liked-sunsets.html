@@ -18,11 +18,9 @@ xmlns:th="http://www.thymeleaf.org">
             <div class="users-post">
                 <div class="users-post" th:each="sunset:${sunsets}">
                     <span th:text="${sunset.getUser().getUsername()}">NAME</span>
-                    <img th:src="'data:/image/png;base64,' + ${sunset.getBase64Photo()}" alt="Sunset Photo">
+                    <img th:src="'data:/image/jpg;base64,' + ${sunset.getBase64Photo()}" alt="Sunset Photo">
     
-                    <a th:href="@{'/likeSunset/' + ${sunset.getId()}}">
-                        <button>Remove</button>
-                    </a>
+
                  </div>
 
             </div>

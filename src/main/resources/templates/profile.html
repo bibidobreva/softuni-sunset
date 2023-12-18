@@ -22,6 +22,7 @@ xmlns:th="http://www.thymeleaf.org">
         <h1 th:text="'Profile of ' + ${user.getUsername()}">PERSONS PROFILE</h1>
 
         <p><a href="/profile/likes" >Liked Sunsets</a></p>
+        <p><a href="/username">Change Username</a></p>
         <div class="user-info">
 
             <div>
@@ -45,7 +46,7 @@ xmlns:th="http://www.thymeleaf.org">
                     <span th:text="${post.getLocation()}">LOCATION</span>
                 </div>
                 <div class="photo">
-                    <img th:src="'data:/image/png;base64,' + ${post.getBase64Photo()}" alt="IMAGE">
+                    <img th:src="'data:/image/jpg;base64,' + ${post.getBase64Photo()}" alt="IMAGE">
                 </div>
             </div>
         </div>

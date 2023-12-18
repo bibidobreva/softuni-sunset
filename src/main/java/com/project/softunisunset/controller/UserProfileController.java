@@ -1,7 +1,6 @@
 package com.project.softunisunset.controller;
 
 import com.project.softunisunset.models.dto.ChangeUsernameDTO;
-import com.project.softunisunset.models.dto.UserRegistrationDTO;
 import com.project.softunisunset.models.entity.Sunset;
 import com.project.softunisunset.models.entity.User;
 import com.project.softunisunset.service.SunsetService;
@@ -72,11 +71,10 @@ public class UserProfileController {
 
 
 
-            return "redirect:/username";
+            return "redirect:/login";
         }
 
-
-        return "redirect:/profile";
+        return "redirect:/home";
     }
 
 

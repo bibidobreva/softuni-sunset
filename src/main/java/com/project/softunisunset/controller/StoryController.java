@@ -58,7 +58,7 @@ public class StoryController {
         }
 
 
-        List<Story> storyList = this.storyRepository.findAll();
+        List<Story> storyList = this.storyRepository.findAllByOrderByIdDesc();
         model.addAttribute("storyList",storyList);
 
         System.out.println("Form submitted successfully");

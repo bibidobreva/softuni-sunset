@@ -22,7 +22,7 @@ public class Sunset extends BaseEntity{
     private LocalDate date;
 
     @Lob
-    @Column(columnDefinition = "BLOB")
+    @Column(columnDefinition = "MEDIUMBLOB")
     private byte[] photo;
 
     @NotNull

@@ -10,7 +10,11 @@ import com.project.softunisunset.repositories.SunsetRepository;
 import com.project.softunisunset.repositories.UserRepository;
 import com.project.softunisunset.repositories.UserRoleRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +31,7 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     private final UserRoleRepository userRoleRepository;
+
 
     public UserService(UserRepository userRepository, SunsetRepository sunsetRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, UserRoleRepository userRoleRepository) {
         this.userRepository = userRepository;
@@ -118,6 +123,11 @@ public class UserService {
         user.setUsername(changeUsernameDTO.getUsername());
         this.userRepository.save(user);
 
+
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        UserDetails userDetails = userDetailsService.loadUserByUsername(getCurrentUser().getUsername());
+//        Authentication newAuthentication = new UsernamePasswordAuthenticationToken(userDetails, authentication.getCredentials(), userDetails.getAuthorities());
+//        SecurityContextHolder.getContext().setAuthentication(newAuthentication);
 
         return true;
     }

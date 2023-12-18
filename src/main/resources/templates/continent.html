@@ -13,7 +13,7 @@ xmlns:th="http://www.thymeleaf.org">
 
     <script>
         function showPhotos(continent) {
-            // Fetch photos for the selected continent asynchronously
+
             fetch('/api/photos?continent=' + continent)
                 .then(response => {
                     if (!response.ok) {
@@ -26,7 +26,7 @@ xmlns:th="http://www.thymeleaf.org">
                     feedContainer.innerHTML = '';
 
                     if (photoUrls.length === 0) {
-                        // Handle case when there are no photos
+
                         feedContainer.innerHTML = '<p>No photos available for this continent</p>';
                     } else {
                         photoUrls.forEach(function (url) {
@@ -66,8 +66,8 @@ xmlns:th="http://www.thymeleaf.org">
             <img class="photoes" src="/images/asia.jpg" alt="Asia" onclick="showPhotos('Asia')">
             <img class="photoes" src="/images/australia.jpg" alt="Australia" onclick="showPhotos('Australia')">
             <img class="photoes" src="/images/europe.jpg" alt="Europe" onclick="showPhotos('Europe')">
-            <img class="photoes" src="/images/north_america.jpg" alt="North America" onclick="showPhotos('North America')">
-            <img class="photoes" src="/images/south_america.jpg" alt="South America" onclick="showPhotos('South America')">
+            <img class="photoes" src="/images/north_america.jpg" alt="North America" onclick="showPhotos('North_America')">
+            <img class="photoes" src="/images/south_america.jpg" alt="South America" onclick="showPhotos('South_America')">
            
         </div>
 
