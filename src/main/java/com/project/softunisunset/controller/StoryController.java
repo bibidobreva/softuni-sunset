@@ -36,8 +36,7 @@ public class StoryController {
     @GetMapping("/blog")
     public String stories(Model model){
 
-        List<Story> storyList = this.storyRepository.findAll();
-        model.addAttribute("storyList",storyList);
+        loadStories(model);
 
         return "blog";
     }
@@ -50,18 +49,21 @@ public class StoryController {
             redirectAttributes.addFlashAttribute("createStoryDTO", createStoryDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.createStoryDTO", bindingResult);
 
-            System.out.println("Error in form submission or creating story");
-            List<Story> storyList = this.storyRepository.findAll();
-            model.addAttribute("storyList", storyList);
+
+            loadStories(model);
 
             return "redirect:/blog";
         }
 
 
+        loadStories(model);
+
+
+        return "redirect:/blog";
+    }
+
+    private void loadStories(Model model) {
         List<Story> storyList = this.storyRepository.findAllByOrderByIdDesc();
         model.addAttribute("storyList",storyList);
-
-        System.out.println("Form submitted successfully");
-        return "redirect:/blog";
     }
 }

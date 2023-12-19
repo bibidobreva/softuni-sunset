@@ -82,7 +82,7 @@ public class SunsetService {
 
 
     public List<Sunset> getAllSunsets() {
-        return this.sunsetRepository.findAll();
+        return this.sunsetRepository.findAllByOrderByIdDesc();
     }
 
     public List<Sunset> getAllSunsetsByUser(User user) {

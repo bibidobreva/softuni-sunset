@@ -24,10 +24,10 @@ public class ScheduledTasks {
    //@Scheduled(fixedRate = 60000) // Run every 1 minute (in milliseconds)
     public void giveReminder() {
         try {
-            // Retrieve all users from the database
+
             List<User> users = userService.getAllUsers();
 
-            // Iterate through each user and send the reminder email
+
             for (User user : users) {
                 String recipientEmail = user.getEmail();
                 String subject = "Reminder";
@@ -37,7 +37,7 @@ public class ScheduledTasks {
             }
 
         } catch (MessagingException e) {
-            // Handle exception
+
             e.printStackTrace();
         }
     }

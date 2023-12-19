@@ -13,4 +13,6 @@ public interface SunsetRepository extends JpaRepository<Sunset, Long> {
     List<Sunset> findAllByContinent(Continent continent);
 
     List<Sunset> findAllByUser(User user);
+
+    List<Sunset> findAllByOrderByIdDesc();
 }

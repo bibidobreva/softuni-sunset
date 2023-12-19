@@ -19,7 +19,7 @@ public class AdminController {
 
     @GetMapping("/changeUserRole")
     public String changeUserRole(Model model) {
-        // Retrieve a list of users to populate the dropdown
+
         model.addAttribute("users", userService.getAllUsers());
         return "admin";
     }

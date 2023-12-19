@@ -13,9 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 
-public class RoleInterceptor implements HandlerInterceptor {
+public class AuthorizationInterceptor implements HandlerInterceptor {
 
-    public RoleInterceptor() {
+    public AuthorizationInterceptor() {
     }
 
 
