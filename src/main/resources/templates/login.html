@@ -17,7 +17,7 @@ xmlns:th="http://www.thymeleaf.org">
 <main>
    <div id="border">
     <form th:action="@{/login}" th:method="POST"
-          th:object="${user}">
+          >
        <h3 class="h-custom">Login</h3>
 
         <div class="field">
@@ -25,9 +25,9 @@ xmlns:th="http://www.thymeleaf.org">
                <Label for="username">Username:</Label>              
             </div>           
             <input type="text" class="form-control" id="username" name="username" placeholder="Username"
-            th:field="*{username}"
-            th:errorclass="is-invalid">
-            <small class="text-danger invalid-feedback" >Error message username</small>           
+                   th:value="${username}"
+           >
+
          </div>
 
    
@@ -37,15 +37,20 @@ xmlns:th="http://www.thymeleaf.org">
                <label for="password">Password:</label>
             </div>
 
-            <input type="password" class="form-control" placeholder="Password" id="password"
-                   th:field="*{password}"
-                   th:errorclass="is-invalid">
-            <small class="text-danger invalid-feedback">Error message password</small>
+            <input type="password" class="form-control" placeholder="Password" id="password" name="password" min="2"
+                   max="20"
+
+                   >
+
             
          </div>
 
+        <p th:if="${bad_credentials}" class="errors alert alert-danger">
+            Invalid username or password.
+        </p>
+
          <div class="button">
-            <button class="button-custom">Login</button>
+            <button class="button-custom" type="submit">Login</button>
          </div>
     </form>
 </div> 

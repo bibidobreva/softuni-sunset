@@ -29,7 +29,7 @@ public class SpringSecurityConfiguration {
                             .usernameParameter("username")
                             .passwordParameter("password")
                             .defaultSuccessUrl("/home")
-                            .failureForwardUrl("/errors");
+                            .failureForwardUrl("/login-error");
                 }
         ).logout(
                 logout->{
