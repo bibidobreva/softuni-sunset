@@ -61,17 +61,15 @@ public class UserProfileController {
     }
 
     @PostMapping("/username")
-    public String changeUsername(@Valid ChangeUsernameDTO changeUsernameDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String changeUsername(@Valid ChangeUsernameDTO changeUsernameDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
 
         User user = userService.getCurrentUser();
         if (bindingResult.hasErrors() || !this.userService.changeUsername(changeUsernameDTO, user)) {
             redirectAttributes.addFlashAttribute("changeUsernameDTO", changeUsernameDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.changeUsernameDTO", bindingResult);
+            model.addAttribute("bad_credentials", true);
 
-
-
-
-            return "redirect:/username";
+            return "username";
         }
 
         return "redirect:/profile";

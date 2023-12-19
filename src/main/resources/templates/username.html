@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/header-footer.css">
     <title>ChangeUsername</title>
 </head>
-<body>
+<body id="body">
 
 <header th:replace="~{fragments/commons::nav}">
 
@@ -30,6 +30,9 @@
                           th:errorclass="is-invalid">
                    <small class="text-danger invalid-feedback">Username must be between 3 and 20 characters</small>
                </div>
+               <p th:if="${bad_credentials != null && bad_credentials}" class="errors alert alert-danger">
+                   Username is already taken or is not the right length!
+               </p>
                <div class="button">
                    <button class="button-custom">Change Username</button>
                </div>
