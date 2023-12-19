@@ -104,8 +104,17 @@ public class UserService {
         if(sunset.isEmpty()){
             throw new RuntimeException();
         }
+
+        boolean isSunsetIdPresent = user.getLikedSunsets()
+                .stream()
+                .map(Sunset::getId)
+                .noneMatch(id -> id.equals(sunsetId));
         user.getLikedSunsets().add(sunset.get());
-        userRepository.save(user);
+
+
+        if(isSunsetIdPresent){
+            userRepository.save(user);
+        }
     }
 
     public List<Sunset> getAllLikedSunsetsOfUser(User user) {

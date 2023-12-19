@@ -31,7 +31,7 @@ public class ScheduledTasks {
             for (User user : users) {
                 String recipientEmail = user.getEmail();
                 String subject = "Reminder";
-                String body = "Hello " + user.getFirstName() + ",\n\nThis is a reminder email.";
+                String body = "Hello " + user.getFirstName() + ",\n\nHave you checked the latest update on our site? Come! Don't miss out!.";
 
                 emailService.sendEmail(recipientEmail, subject, body);
             }

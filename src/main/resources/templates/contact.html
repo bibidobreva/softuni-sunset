@@ -13,13 +13,23 @@ xmlns:th="http://www.thymeleaf.org">
     <header th:replace="~{fragments/commons::nav}"></header>
 
     <main>
-        <div class="card border-dark mb-3" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
+        <div class="card border-dark mb-3 container-fluid text-center" style="max-width: 18rem;">
+            <div class="card-header">Contact us online</div>
             <div class="card-body text-dark">
-              <h5 class="card-title">Dark card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title">You can reach us at:</h5>
+              <p class="card-text">Email: example@email.com <br>
+              Phone: 00 888888888</p>
+
             </div>
           </div>
+        <div class="card border-dark mb-3 container-fluid text-center" style="max-width: 18rem;">
+            <div class="card-header">Contact us online</div>
+            <div class="card-body text-dark">
+                <h5 class="card-title">You can visit us at</h5>
+                <p class="card-text">Office one: Random street 15 <br>
+                Office two: Another street 20</p>
+            </div>
+        </div>
     </main>
 
     <footer th:replace="~{fragments/commons::footer}"></footer>
