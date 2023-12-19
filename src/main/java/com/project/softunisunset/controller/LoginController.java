@@ -32,7 +32,7 @@ public class LoginController {
 
         model.addAttribute("username", username);
         model.addAttribute("bad_credentials", true);
-        
+
 
         return "login";
     }

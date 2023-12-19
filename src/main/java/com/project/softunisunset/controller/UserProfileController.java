@@ -71,10 +71,10 @@ public class UserProfileController {
 
 
 
-            return "redirect:/login";
+            return "redirect:/username";
         }
 
-        return "redirect:/home";
+        return "redirect:/profile";
     }
 
 

@@ -6,6 +6,7 @@ import com.project.softunisunset.repositories.EventRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 
@@ -16,30 +17,35 @@ import static org.mockito.Mockito.*;
 public class EventServiceTest {
 
 
-        private EventRepository mockEventRepository;
-        private ModelMapper mockModelMapper;
-        private EventService eventService;
+    @Mock
+    private EventRepository mockEventRepository;
 
-        @BeforeEach
-        void setUp() {
-            mockEventRepository = mock(EventRepository.class);
-            mockModelMapper = mock(ModelMapper.class);
-            eventService = new EventService(mockEventRepository, mockModelMapper);
-        }
+    @Mock
+    private ModelMapper mockModelMapper;
 
-        @Test
-        void createEventShouldSaveEventAndReturnTrue() {
-            // Arrange
-            CreateEventDTO createEventDTO = new CreateEventDTO();
-            Event mappedEvent = new Event();
+    @Mock
+    private EventService eventService;
 
-            when(mockModelMapper.map(createEventDTO, Event.class)).thenReturn(mappedEvent);
+    @BeforeEach
+    void setUp() {
+        mockEventRepository = mock(EventRepository.class);
+        mockModelMapper = mock(ModelMapper.class);
+        eventService = new EventService(mockEventRepository, mockModelMapper);
+    }
 
-            // Act
-            boolean result = eventService.createEvent(createEventDTO);
+    @Test
+    void createEventShouldSaveEventAndReturnTrue() {
+        // Arrange
+        CreateEventDTO createEventDTO = new CreateEventDTO();
+        Event mappedEvent = new Event();
 
-            // Assert
-            assertTrue(result);
-            verify(mockEventRepository).save(any(Event.class));
-        }
+        when(mockModelMapper.map(createEventDTO, Event.class)).thenReturn(mappedEvent);
+
+        // Act
+        boolean result = eventService.createEvent(createEventDTO);
+
+        // Assert
+        assertTrue(result);
+        verify(mockEventRepository).save(any(Event.class));
+    }
 }

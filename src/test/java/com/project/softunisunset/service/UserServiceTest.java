@@ -12,6 +12,7 @@ import com.project.softunisunset.repositories.UserRoleRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.Authentication;
@@ -35,6 +36,8 @@ public class UserServiceTest {
     private ModelMapper mockModelMapper;
     private PasswordEncoder mockPasswordEncoder;
     private UserRoleRepository mockUserRoleRepository;
+
+    @Mock
     private UserService userService;
 
     @BeforeEach

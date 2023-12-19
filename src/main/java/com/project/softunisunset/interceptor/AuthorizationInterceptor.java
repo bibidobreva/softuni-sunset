@@ -3,6 +3,7 @@ package com.project.softunisunset.interceptor;
 import com.project.softunisunset.models.enums.UserRolesEnums;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 
@@ -13,12 +14,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 
+
 public class AuthorizationInterceptor implements HandlerInterceptor {
 
     public AuthorizationInterceptor() {
     }
 
 
+    @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
         System.out.println("Request URI: " + request.getRequestURI());
         try {

@@ -31,12 +31,13 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     private final UserRoleRepository userRoleRepository;
+    private final UserDetailsService userDetailsService;
 
 
-    public UserService(UserRepository userRepository, SunsetRepository sunsetRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, UserRoleRepository userRoleRepository) {
+    public UserService(UserRepository userRepository, SunsetRepository sunsetRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, UserRoleRepository userRoleRepository, UserDetailsService userDetailsService) {
         this.userRepository = userRepository;
         this.sunsetRepository = sunsetRepository;
-
+        this.userDetailsService = userDetailsService;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
         this.userRoleRepository = userRoleRepository;
@@ -73,7 +74,6 @@ public class UserService {
         roles.add(role.get());
 
 
-
         registrationDTO.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
 
 
@@ -90,10 +90,10 @@ public class UserService {
     }
 
 
-    public User getCurrentUser(){
+    public User getCurrentUser() {
         String loggedInUsername = SecurityContextHolder.getContext().getAuthentication().getName();
         Optional<User> currentUser = this.userRepository.findByUsername(loggedInUsername);
-        if(currentUser.isEmpty()){
+        if (currentUser.isEmpty()) {
             throw new RuntimeException();
         }
         return currentUser.get();
@@ -101,7 +101,7 @@ public class UserService {
 
     public void likeSunset(User user, Long sunsetId) {
         Optional<Sunset> sunset = this.sunsetRepository.findById(sunsetId);
-        if(sunset.isEmpty()){
+        if (sunset.isEmpty()) {
             throw new RuntimeException();
         }
 
@@ -112,7 +112,7 @@ public class UserService {
         user.getLikedSunsets().add(sunset.get());
 
 
-        if(isSunsetIdPresent){
+        if (isSunsetIdPresent) {
             userRepository.save(user);
         }
     }
@@ -125,18 +125,15 @@ public class UserService {
 
         Optional<User> matchingUser = userRepository.findByUsername(changeUsernameDTO.getUsername());
 
-        if(matchingUser.isPresent()){
+        if (matchingUser.isPresent()) {
             return false;
         }
 
         user.setUsername(changeUsernameDTO.getUsername());
         this.userRepository.save(user);
-
-
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        UserDetails userDetails = userDetailsService.loadUserByUsername(getCurrentUser().getUsername());
-//        Authentication newAuthentication = new UsernamePasswordAuthenticationToken(userDetails, authentication.getCredentials(), userDetails.getAuthorities());
-//        SecurityContextHolder.getContext().setAuthentication(newAuthentication);
+        UserDetails updatedUserDetails = userDetailsService.loadUserByUsername(user.getUsername());
+        Authentication authentication = new UsernamePasswordAuthenticationToken(updatedUserDetails, null, updatedUserDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
 
         return true;
     }

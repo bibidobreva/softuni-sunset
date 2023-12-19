@@ -22,9 +22,10 @@
             <ul>
                 <li><a href="/login" sec:authorize="!isAuthenticated()">Login</a></li>
                 <li><a href="/register" sec:authorize="!isAuthenticated()">Register</a></li>
-                <li><a href="/events" sec:authorize="isAuthenticated()">Events</a></li>
                 <li><a href="/blog" sec:authorize="isAuthenticated()">Blog</a></li>
+                <li><a href="/events" sec:authorize="isAuthenticated()">Events</a></li>
                 <li><a href="/events/add" sec:authorize="hasRole('ADMIN')">Add Event</a></li>
+                <li><a href="/changeUserRole" sec:authorize="hasRole('ADMIN')">Admin</a></li>
                 <li><a href="/profile" sec:authorize="isAuthenticated()">Profile</a></li>
                 <li sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" method="post">

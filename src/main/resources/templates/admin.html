@@ -2,32 +2,43 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/header-footer.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <title>Admin</title>
 </head>
-<body>
-
+<body id="body">
+    <header th:replace="~{fragments/commons::nav}"></header>
 <main>
-    <h2>Change User Role</h2>
+    <div id="border">
+    
 
     <form th:action="@{/changeUserRole}" th:method="post">
-        <label for="username">Select User:</label>
+        <h3 class="h-custom">Change User Role</h3>
+
+        <div class="field">
+        
+            <div><label for="username">Select User:</label></div>
         <select id="username" name="username" required>
             <option th:each="user : ${users}" th:text="${user.username}" th:value="${user.username}"></option>
         </select>
 
-        <br>
+    </div>
 
-        <label for="newRole">Select New Role:</label>
+    <div class="field">
+        <div><label for="newRole">Select New Role:</label></div>
         <select id="newRole" name="newRole" required>
             <option value="USER">User</option>
             <option value="ADMIN">Admin</option>
         </select>
 
-        <br>
+    </div>
 
-        <button>Change Role</button>
+        <div class="button"><button class="button-custom">Change Role</button></div>
     </form>
-
+   </div>
 </main>
+<footer th:replace="~{fragments/commons::footer}"></footer>
 </body>
 </html>
