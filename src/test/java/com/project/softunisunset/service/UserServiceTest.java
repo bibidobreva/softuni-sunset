@@ -12,6 +12,7 @@ import com.project.softunisunset.repositories.UserRoleRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
@@ -30,14 +31,21 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceTest {
+    @Mock
     private UserRepository mockUserRepository;
+    @Mock
     private SunsetRepository mockSunsetRepository;
+    @Mock
     private ModelMapper mockModelMapper;
-    private PasswordEncoder mockPasswordEncoder;
-    private UserRoleRepository mockUserRoleRepository;
-    private UserDetailsService mockUserDetailsService;
 
     @Mock
+    private PasswordEncoder mockPasswordEncoder;
+    @Mock
+    private UserRoleRepository mockUserRoleRepository;
+    @Mock
+    private UserDetailsService mockUserDetailsService;
+
+    @InjectMocks
     private UserService userService;
 
     @BeforeEach

@@ -20,8 +20,8 @@ public class ScheduledTasks {
         this.userService = userService;
     }
 
-   @Scheduled(cron = "0 0 20 * * ?") // Run every day at 8:00 PM
-   //@Scheduled(fixedRate = 60000) // Run every 1 minute (in milliseconds)
+  @Scheduled(cron = "0 0 20 * * ?") // Run every day at 8:00 PM
+//   @Scheduled(fixedRate = 60000) // Run every 1 minute (in milliseconds)
     public void giveReminder() {
         try {
 

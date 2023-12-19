@@ -17,7 +17,7 @@ spring:
         enabled: 'true'
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    password: 'Sukunalevi1!'
+    password: '12345'
     username: 'root'
     url: jdbc:mysql://localhost:3306/sunset?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
 logging:

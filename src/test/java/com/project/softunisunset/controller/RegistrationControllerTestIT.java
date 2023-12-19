@@ -1,5 +1,6 @@
 package com.project.softunisunset.controller;
 
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -13,6 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@Transactional
 public class RegistrationControllerTestIT {
 
     @Autowired
@@ -31,7 +33,7 @@ public class RegistrationControllerTestIT {
                         .param("confirmPassword", "123456")
                         .with(csrf())
         ).andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/register"));
+                .andExpect(view().name("redirect:login"));
     }
 
 

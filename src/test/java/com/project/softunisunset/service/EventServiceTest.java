@@ -6,6 +6,7 @@ import com.project.softunisunset.repositories.EventRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
@@ -23,7 +24,7 @@ public class EventServiceTest {
     @Mock
     private ModelMapper mockModelMapper;
 
-    @Mock
+    @InjectMocks
     private EventService eventService;
 
     @BeforeEach
@@ -41,11 +42,11 @@ public class EventServiceTest {
 
         when(mockModelMapper.map(createEventDTO, Event.class)).thenReturn(mappedEvent);
 
-
         boolean result = eventService.createEvent(createEventDTO);
 
-
         assertTrue(result);
-        verify(mockEventRepository).save(any(Event.class));
+
+
+        verify(mockEventRepository, times(1)).save(any(Event.class));
     }
 }
