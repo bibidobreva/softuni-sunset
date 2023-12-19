@@ -47,9 +47,8 @@ public class EventControllerTestIT {
     void testPostAddEventSuccess() throws Exception {
         createAdminUser();
         mockMvc.perform(MockMvcRequestBuilders.post("/events/add")
-                        .param("eventName", "Test Event")
-                        .param("eventDate", "2023-12-31")
-                        .param("location", "Test Location")
+                        .param("name", "Test Event")
+                        .param("date", "2023-12-31")
                         .param("description", "Test Description")
                         .with(csrf())
                         .with(user("test").roles("ADMIN")))

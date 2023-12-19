@@ -30,10 +30,10 @@ logging:
       nodeValue: WARN
     blog: WARN
   mail:
-    host: smtp.example.com  # Replace with your SMTP server host
-    port: 587  # Replace with your SMTP server port
-    username: sunset@example.com  # Replace with your email username
-    password: sunset-password  # Replace with your email password
+    host: sandbox.smtp.mailtrap.io
+    port: 2525
+    username: ec6314ea34fa7b
+    password: 20b46028de3000
     properties:
       mail:
         smtp:
