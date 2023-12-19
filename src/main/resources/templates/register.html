@@ -31,7 +31,7 @@ xmlns:th="http://www.thymeleaf.org">
                  <input class="form-control" type="text" placeholder="Username" name="username" id="username"
                         th:field = "*{username}"
                         th:errorclass="is-invalid">
-                 <small class="text-danger invalid-feedback">Username must be between 3 and 20 characters</small>
+                 <small class="text-danger invalid-feedback">Username must be between 3 and 20 characters!</small>
               </div>
 
 
@@ -42,7 +42,7 @@ xmlns:th="http://www.thymeleaf.org">
                 <input type="text" class="form-control" placeholder="Name" id="firstName"
                        th:field = "*{firstName}"
                        th:errorclass="is-invalid">
-                <small class="text-danger invalid-feedback">Error message first name</small>
+                <small class="text-danger invalid-feedback">First name must be between 3 and 20 characters!</small>
               </div>
 
               <div class="field">
@@ -52,7 +52,7 @@ xmlns:th="http://www.thymeleaf.org">
                 <input type="text" class="form-control" placeholder="Last name" id="lastName"
                        th:field = "*{lastName}"
                        th:errorclass="is-invalid">
-                <small class="text-danger invalid-feedback">Error message last name</small>
+                <small class="text-danger invalid-feedback">Last name must be between 3 and 20 characters!</small>
 
               </div>
 
@@ -73,7 +73,7 @@ xmlns:th="http://www.thymeleaf.org">
                  <input type="password" class="form-control" placeholder="Password" id="password"
                         th:field = "*{password}"
                         th:errorclass="is-invalid">
-                 <small class="text-danger invalid-feedback">Error message password</small>
+                 <small class="text-danger invalid-feedback">Password must be between 3 and 20 characters!</small>
               </div>
 
               <div class="field">
@@ -83,7 +83,7 @@ xmlns:th="http://www.thymeleaf.org">
                 <input type="password" class="form-control" placeholder="Password" id="confirmPassword"
                        th:field = "*{confirmPassword}"
                        th:errorclass="is-invalid">
-                <small class="text-danger invalid-feedback">Error message password</small>
+                <small class="text-danger invalid-feedback"></small>
              </div>
 
              <div class="button">

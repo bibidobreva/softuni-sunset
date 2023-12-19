@@ -22,6 +22,7 @@ public class CreateSunsetDTO {
 
     private User user;
 
+    @NotNull
     private MultipartFile photo;
 
     public CreateSunsetDTO(){}

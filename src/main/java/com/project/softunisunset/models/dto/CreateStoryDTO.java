@@ -11,11 +11,11 @@ import java.time.LocalDate;
 public class CreateStoryDTO {
 
 
-    @NotNull
+    @NotBlank
     @Size(min = 2, max = 20)
     private String name;
 
-    @NotNull
+    @NotBlank
     @Size(min = 2, max = 500)
     private String story;
 

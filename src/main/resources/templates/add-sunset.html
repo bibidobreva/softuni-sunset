@@ -32,7 +32,7 @@ xmlns:th="http://www.thymeleaf.org">
                                th:field = "*{location}"
                                th:errorclass="is-invalid">
                     </div>
-                    <small class="text-danger invalid-feedback">Error message location</small>
+                    <small class="text-danger invalid-feedback">Location must be between 2 and 20 characters!</small>
                  </div>
         
                  <div class="field">
@@ -42,7 +42,7 @@ xmlns:th="http://www.thymeleaf.org">
                     <input class="form-control" type="date" id="date"
                            th:field = "*{date}"
                            th:errorclass="is-invalid">
-                    <small class="text-danger invalid-feedback">Error message date</small>
+                    <small class="text-danger invalid-feedback">Date cannot be empty!It must be present or past!</small>
                  </div>
         
                  <div class="field">
@@ -61,7 +61,7 @@ xmlns:th="http://www.thymeleaf.org">
                         <option value="NORTH_AMERICA">North America</option>
                         <option value="SOUTH_AMERICA">South America</option>
                     </select>
-                    <small class="text-danger invalid-feedback">Error message continent</small>
+                    <small class="text-danger invalid-feedback">Please chose a continent!</small>
                  </div>
     
                  <div class="field">
@@ -71,7 +71,7 @@ xmlns:th="http://www.thymeleaf.org">
                      <input class="form-control" type="file" name="photo" id="photo" accept="image/*" required th:errorclass="is-invalid">
 
 
-                     <small class="text-danger invalid-feedback">Error message file</small>
+                     <small class="text-danger invalid-feedback">You must choose a photo file!</small>
                 </div>
 
                 <input type="hidden" th:field="*{user.username}" th:value="${#authentication.name}">

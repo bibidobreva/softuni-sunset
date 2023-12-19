@@ -30,7 +30,7 @@ xmlns:th="http://www.thymeleaf.org">
                 <input type="text" class="form-control" id="name" placeholder="Story name"
                 th:field = "*{name}"
                 th:errorclass = "is-invalid">
-                <small class="text-danger invalid-feedback">Error message name</small>
+                <small class="text-danger invalid-feedback">Name must be between 2 and 20 characters!</small>
             </div>
 
             
@@ -42,7 +42,7 @@ xmlns:th="http://www.thymeleaf.org">
                 <textarea class="form-control" name="text" id="story" cols="30" rows="10" placeholder="Write your story here..."
                           th:field = "*{story}"
                           th:errorclass = "is-invalid"></textarea>
-                <small class="text-danger invalid-feedback">Error message story</small>
+                <small class="text-danger invalid-feedback">Story text should be between 2 and 500 characters long!</small>
             </div>
 
                <input type="hidden" th:field="*{date}" th:value="${createStoryDTO.date}" />

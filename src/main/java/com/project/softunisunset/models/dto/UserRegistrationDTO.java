@@ -16,9 +16,11 @@ public class UserRegistrationDTO {
     private String username;
 
     @Size(min = 3, max = 20)
+    @NotBlank
     private String firstName;
 
     @Size(min = 3, max = 20)
+    @NotBlank
     private String lastName;
 
     @Email
