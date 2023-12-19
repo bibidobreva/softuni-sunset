@@ -29,8 +29,10 @@ public class LoginController {
     public String onFailure(
             @ModelAttribute("username") String username, Model model) {
 
+
         model.addAttribute("username", username);
-        model.addAttribute("bad_credentials", "true");
+        model.addAttribute("bad_credentials", true);
+        
 
         return "login";
     }
