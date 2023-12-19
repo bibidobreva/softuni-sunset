@@ -163,7 +163,7 @@ public class SunsetServiceTest {
     void getAllSunsetsShouldReturnAllSunsets() {
         // Arrange
         List<Sunset> allSunsets = Collections.singletonList(new Sunset());
-        when(mockSunsetRepository.findAll()).thenReturn(allSunsets);
+        when(mockSunsetRepository.findAllByOrderByIdDesc()).thenReturn(allSunsets);
 
         // Act
         List<Sunset> result = sunsetService.getAllSunsets();

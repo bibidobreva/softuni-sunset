@@ -46,14 +46,14 @@ public class StoryServiceTest {
 
     @Test
     void createStoryShouldReturnTrueWhenCreationIsSuccessful() {
-        // Arrange
+
         CreateStoryDTO createStoryDTO = new CreateStoryDTO();
         createStoryDTO.setName("Test Story");
         createStoryDTO.setStory("This is a test story content.");
 
         String loggedInUsername = "testUser";
 
-        // Mock SecurityContext and Authentication
+
         SecurityContext securityContext = mock(SecurityContext.class);
         Authentication authentication = mock(Authentication.class);
         when(securityContext.getAuthentication()).thenReturn(authentication);
@@ -67,10 +67,10 @@ public class StoryServiceTest {
         Story mappedStory = new Story();
         when(mockModelMapper.map(createStoryDTO, Story.class)).thenReturn(mappedStory);
 
-        // Act
+
         boolean result = storyService.createStory(createStoryDTO);
 
-        // Assert
+
         assertTrue(result);
         assertEquals(currentUser, mappedStory.getUser());
         verify(mockStoryRepository, times(1)).save(mappedStory);
@@ -80,7 +80,7 @@ public class StoryServiceTest {
 
     @Test
     void createStoryShouldReturnFalseWhenCurrentUserNotFound() {
-        // Arrange
+
         CreateStoryDTO createStoryDTO = new CreateStoryDTO();
         createStoryDTO.setName("Test Story");
         createStoryDTO.setStory("This is a test story content.");
@@ -98,10 +98,10 @@ public class StoryServiceTest {
 
         when(mockUserRepository.findByUsername(loggedInUsername)).thenReturn(Optional.empty());
 
-        // Act
+
         boolean result = storyService.createStory(createStoryDTO);
 
-        // Assert
+
         assertFalse(result);
         verify(mockStoryRepository, never()).save(any(Story.class));
     }

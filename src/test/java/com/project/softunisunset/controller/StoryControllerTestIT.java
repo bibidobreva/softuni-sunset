@@ -31,7 +31,7 @@ public class StoryControllerTestIT {
                         .param("name", "Test Story")
                         .param("story", "This is a test story.")
                         .with(csrf())
-                        .with(user("test"))) // Provide the username, password, and roles as needed
+                        .with(user("test")))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/blog"));
     }

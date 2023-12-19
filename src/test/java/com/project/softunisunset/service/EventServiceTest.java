@@ -35,16 +35,16 @@ public class EventServiceTest {
 
     @Test
     void createEventShouldSaveEventAndReturnTrue() {
-        // Arrange
+
         CreateEventDTO createEventDTO = new CreateEventDTO();
         Event mappedEvent = new Event();
 
         when(mockModelMapper.map(createEventDTO, Event.class)).thenReturn(mappedEvent);
 
-        // Act
+
         boolean result = eventService.createEvent(createEventDTO);
 
-        // Assert
+
         assertTrue(result);
         verify(mockEventRepository).save(any(Event.class));
     }
